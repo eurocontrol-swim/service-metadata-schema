@@ -18,7 +18,7 @@
     "Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: http://opensource.org/licenses/BSD-3-Clause",
     "Details on EUROCONTROL: http://www.eurocontrol.int"
   ],
-  "title": "Service Description schema for SWIM_COMPLIANT",
+  "title": "Service Metadata Schema for service descriptions",
   "description": "",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
