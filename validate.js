@@ -3,10 +3,10 @@ const addFormats = require("ajv-formats");
 const fs = require("fs");
 const path = require("path");
 
-// Inizializza AJV senza validare schemi e senza caricare meta-schema
+// Initialise AJV without validating the schemas and load the meta-schema
 const ajv = new Ajv2020({ 
   strict: true, 
-  validateSchema: false, // Non validare gli schemi caricati
+  validateSchema: false, // Do not validate loaded schemas
   allErrors: true,
   strictTypes: false,
   strictSchema: false,
@@ -15,45 +15,45 @@ const ajv = new Ajv2020({
 addFormats(ajv);
 
 async function run() {
-  console.log("=== Inizio validazione ===\n");
+  console.log("=== Start validation ===\n");
   
   try {
 
     const geoJsonSchema = JSON.parse(await fs.promises.readFile("./common/GeometryCollection.json", "utf8"));
     ajv.addSchema(geoJsonSchema);
-    console.log("✓ Schema GeoJSON GeometryCollection caricato");
+    console.log("✓ GeoJSON GeometryCollection loaded");
 
-    // Carica gli schemi direttamente
+    // Directly Loads the schemas
     const commonTypes = JSON.parse(await fs.promises.readFile("./common/common-types.schema.json", "utf8"));
     //const serviceDescription = JSON.parse(await fs.promises.readFile("./description/service_description.schema.json", "utf8"));
     const serviceDescription = JSON.parse(await fs.promises.readFile("./definition/service_definition.schema.json", "utf8"));
 
-    // Registra common-types
+    // Registers common-types
     ajv.addSchema(commonTypes, commonTypes.$id || "common-types");
-    console.log("✓ Schema common-types caricato");
+    console.log("✓ Schema common-types loaded");
     
-    // Compila service_description
+    // Compiles service_description
     const validate = ajv.compile(serviceDescription);
-    console.log("✓ Schema service_description compilato\n");
+    console.log("✓ Schema service_description compiled\n");
     
-    // Carica i dati da validare
+    // Loads data for validation
     const data = JSON.parse(await fs.promises.readFile("./description/test.json", "utf8"));
     
-    // Valida
+    // Validates
     const valid = validate(data);
     
     if (valid) {
-      console.log("✓ Validazione OK!");
+      console.log("✓ Validation OK!");
     } else {
-      console.error("✗ Errori di validazione:");
+      console.error("✗ Validation Errors:");
       console.error(JSON.stringify(validate.errors, null, 2));
     }
     
   } catch (error) {
-    console.error("\n=== ERRORE ===");
+    console.error("\n=== ERRORS ===");
     console.error(error.message);
     if (error.errors) {
-      console.error("Dettagli errori AJV:");
+      console.error("AJV Error details:");
       console.error(JSON.stringify(error.errors, null, 2));
     }
   }
