@@ -58,7 +58,7 @@
       ],
       "properties": {
         "documentInformation": {
-          "description": "Metadata about the service description or definition. [SWIM-SERV-030]",
+          "description": "Metadata about the service description or definition. [SWIM-DEFN-030]",
           "$ref": "#/$defs/DocumentMetadata"
         },
         "serviceAbstract": {
@@ -100,7 +100,7 @@
       }
     },
     "DocumentMetadata": {
-      "description": "Was DescriptionInformation. Meta information about the service description or definition.",
+      "description": "Meta information about the service description or definition. [SWIM-DEFN-030]",
       "allOf": [
         {
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/DocumentMetadata"
@@ -148,12 +148,12 @@
       ],
       "properties": {
         "name": {
-          "description": "The name of the SWIM TI Profile. [SWIM-DEFN-250]",
+          "description": "The name of the SWIM TI Profile (e.g. EUROCONTROL SWIM Technical Infrastructure Yellow Profile) [SWIM-DEFN-250]",
           "type": "string",
           "minLength": 1
         },
         "version": {
-          "description": "The version of the SWIM TI Profile. [SWIM-DEFN-250]",
+          "description": "The version of the SWIM TI Profile. (e.g. 1.1)  [SWIM-DEFN-250]",
           "type": "string",
           "minLength": 1
         },
@@ -171,7 +171,7 @@
         {
           "type": "object",
           "properties": {
-            "SwimTIProfile": {
+            "swimTIProfile": {
               "description": "The SWIM TI Profile that has been selected for the implementation of the service interface. [SWIM-DEFN-250]",
               "$ref": "#/$defs/SwimTIProfile"
             }
@@ -180,7 +180,8 @@
             "name",
             "description",
             "provisionSide",
-            "operations"
+            "operations",
+            "swimTIProfile"
           ]
         }
       ],

@@ -145,7 +145,7 @@
       }
     },
     "DocumentMetadata": {
-      "description": "Was DescriptionInformation. Meta information about the service description or definition.",
+      "description": "Meta information about the service description or definition.",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -688,33 +688,41 @@
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "The name of the endpoint",
           "type": "string"
         },
         "description": {
+          "description": "The description of the endpoint",
           "type": "string"
         },
         "reference": {
+          "description": "An external reference where more information or details about the endpoint can be found",
           "$ref": "#/$defs/Reference"
         },
         "resourceType": {
+          "description": "The type of resource that can be accessed via the endpoint",
           "type": "string"
         },
         "url": {
+          "description": "The fully qualified network address at which the endpoint can be accessed",
           "type": "string",
           "format": "uri"
         },
         "operations": {
+          "description": "In case different operations can be reached through different endpoints, you may indicate here the set of operations that can be accessed via this endpoint. An operation at this level is just a 'pointer' to the operation reported with more details within the informationService/serviceInterface[]/operations array.",
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "name": {
+                "description": "The name of the operation as reported in the informationService/serviceInterface[]/operations array",
                 "type": "string"
               }
             }
           }
         },
         "messages": {
+          "description": "In case different messages can be exchanged through different endpoints, you may indicate here which messages are exchanged via this endpoint.",
           "type": "array",
           "items": {
             "type": "object",
@@ -725,9 +733,11 @@
             "additionalProperties": false,
             "properties": {
               "name": {
+                "description": "The name of the message",
                 "type": "string"
               },
               "direction": {
+                "description": "The direction (Input or Output) of the message",
                 "type": "string",
                 "enum": [
                   "IN",

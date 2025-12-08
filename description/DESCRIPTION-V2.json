@@ -69,7 +69,7 @@
               "$ref": "#/$defs/ServiceTechnicalDescription"
             },
             "references": {
-              "description": "References to complementary documents that provide additional details about the service. [SWIM-SERV-010, SWIM-SERV-120]",
+              "description": "May host references to complementary documents that provide additional details about the service or information about the implemented Standards. Note that if the information service implements a Standard (e.g. an EUROCONTROL Service or SWIM Spec, a EUROCAE Service Standard..) this should be documented in this property   [SWIM-SERV-010, SWIM-SERV-120]",
               "$ref": "#/$defs/ServiceDescriptionReferences"
             },
             "serviceInterface": {
@@ -94,7 +94,7 @@
       ]
     },
     "DocumentMetadata": {
-      "description": "Was DescriptionInformation. Meta information about the service description or definition.",
+      "description": "Meta information about the service description or definition. [SWIM-SERV-030]",
       "allOf": [
         {
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/DocumentMetadata"
