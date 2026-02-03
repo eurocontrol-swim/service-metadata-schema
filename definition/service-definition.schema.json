@@ -21,6 +21,7 @@
   "title": "Service Metadata Schema for service definitions",
   "description": "JSON Schema for service definitions based on the requirements from the EUROCONTROL SWIM Service Definition Specification (EUROCONTROL-SPEC-195) Ed. 1.0.",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/service-metadata-schema/definition/service_definition.schema.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -40,9 +41,6 @@
       "allOf": [
         {
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/BaseInformationService"
-        },{
-          "type": "object",
-          "serviceDefinitionProvider": false
         }
       ],
       "required": [
@@ -58,7 +56,7 @@
       ],
       "properties": {
         "documentInformation": {
-          "description": "Metadata about the service description or definition. [SWIM-DEFN-030]",
+          "description": "Metadata about the service description or definition. [SWIM-SERV-030]",
           "$ref": "#/$defs/DocumentMetadata"
         },
         "serviceAbstract": {
@@ -100,7 +98,7 @@
       }
     },
     "DocumentMetadata": {
-      "description": "Meta information about the service description or definition. [SWIM-DEFN-030]",
+      "description": "Was DescriptionInformation. Meta information about the service description or definition.",
       "allOf": [
         {
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/DocumentMetadata"
@@ -148,12 +146,12 @@
       ],
       "properties": {
         "name": {
-          "description": "The name of the SWIM TI Profile (e.g. EUROCONTROL SWIM Technical Infrastructure Yellow Profile) [SWIM-DEFN-250]",
+          "description": "The name of the SWIM TI Profile. [SWIM-DEFN-250]",
           "type": "string",
           "minLength": 1
         },
         "version": {
-          "description": "The version of the SWIM TI Profile. (e.g. 1.1)  [SWIM-DEFN-250]",
+          "description": "The version of the SWIM TI Profile. [SWIM-DEFN-250]",
           "type": "string",
           "minLength": 1
         },
@@ -171,7 +169,7 @@
         {
           "type": "object",
           "properties": {
-            "swimTIProfile": {
+            "SwimTIProfile": {
               "description": "The SWIM TI Profile that has been selected for the implementation of the service interface. [SWIM-DEFN-250]",
               "$ref": "#/$defs/SwimTIProfile"
             }
@@ -180,8 +178,7 @@
             "name",
             "description",
             "provisionSide",
-            "operations",
-            "swimTIProfile"
+            "operations"
           ]
         }
       ],
@@ -255,4 +252,3 @@
     }
   }
 }
-
