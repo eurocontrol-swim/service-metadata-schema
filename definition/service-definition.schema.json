@@ -21,7 +21,7 @@
   "title": "Service Metadata Schema for service definitions",
   "description": "JSON Schema for service definitions based on the requirements from the EUROCONTROL SWIM Service Definition Specification (EUROCONTROL-SPEC-195) Ed. 1.0.",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "/service-metadata-schema/definition/service_definition.schema.json",
+  "$id": "/service-metadata-schema/definition/service-definition.schema.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
