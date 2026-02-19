@@ -1,37 +1,38 @@
 {
-  "informationService": {
+  "informationServiceDefinition": {
     "serviceAbstract": "This is an example aeronautical service description for testing purposes.",
-     "documentInformation": {
-      "serviceType": "SERVICE_DESCRIPTION",
-      "documentIdentification": {
-        "title": "Example Service Description",
-        "referenceDate": "2025-11-26",
-        "edition": "1"
-      }
-    },
+    "title": "Example Service Description",
+    "referenceDate": "2025-11-26",
+    "edition": "1",
     "serviceIdentification": {
       "name": "Example Aeronautical Service",
       "version": "1.0"
     },
-    "serviceProvider": {
-      "provider": "Example ANSP",
-      "providerDescription": "Example Air Navigation Service Provider delivering test data",
+    "serviceDefinitionProvider": {
+      "name": "Example ANSP",
+      "description": "Example Air Navigation Service Provider delivering test data",
       "abbreviation": "E-ANSP",
       "pointOfContact": [
         {
           "name": "John Doe",
           "role": "SERVICE_MANAGER",
-          "contactInformation": [{
-            "address": "xxx",
-            "type": "EMAIL"
-          }]
-        }]
+          "contactInformation": [
+            {
+              "address": "xxx",
+              "type": "EMAIL"
+            }
+          ]
+        }
+      ]
     },
     "serviceCategorisation": {
-      "lifeCycle": [ {"lifeCycleStage": "OPERATIONAL"} ],
-      "informationCategory": ["REGULATED"],
+      "informationCategory": [
+        "AERONAUTICAL_INFORMATION_EXCHANGE"
+      ],
       "applicationMessageExchangePattern": [
-        { "name": "REQUEST_RESPONSE" }
+        {
+          "name": "REQUEST_REPLY"
+        }
       ],
       "geospatialCategorisation": {
         "description": "EUROCONTROL region"
@@ -40,10 +41,16 @@
     "generalDescription": {
       "operationalEnvironment": {
         "operationalNeeds": [
-          { "name": "Support tactical planning", "description": "Provides real-time positions to support tactical planning activities." }
+          {
+            "name": "Support tactical planning",
+            "description": "Provides real-time positions to support tactical planning activities."
+          }
         ],
         "capabilities": [
-          { "name": "Traffic Situational Awareness", "description": "Provides real-time traffic situational awareness." }
+          {
+            "name": "Traffic Situational Awareness",
+            "description": "Provides real-time traffic situational awareness."
+          }
         ]
       },
       "functionality": [
@@ -54,29 +61,48 @@
         }
       ],
       "qualitiesOfService": {
-        "performance": [ { "name": "Low latency", "description": "Ensures minimal delay in data transmission." } ],
-        "reliability": [ { "name": "High availability", "description": "Service is available 99.9% of the time." } ],
-        "security": [ { "name": "TLS encrypted", "description": "Data is encrypted using TLS protocol." } ]
+        "performance": [
+          {
+            "name": "Low latency",
+            "description": "Ensures minimal delay in data transmission."
+          }
+        ],
+        "reliability": [
+          {
+            "name": "High availability",
+            "description": "Service is available 99.9% of the time."
+          }
+        ],
+        "security": [
+          {
+            "name": "TLS encrypted",
+            "description": "Data is encrypted using TLS protocol."
+          }
+        ]
       },
-      "qualityOfData": 
-        [ { "name": "Position accuracy", "description": "Positions are accurate to within 5 meters." } ],
-      "abbreviations": [
-        { "name": "ETA", "description": "Estimated Time of Arrival" }
+      "qualityOfData": [
+        {
+          "name": "Position accuracy",
+          "description": "Positions are accurate to within 5 meters."
+        }
       ],
-      "dateInOperation": "2023-01-15",
-      "serviceSupport": [{
-        "name": "Jane Smith",
-        "contactInformation": [{
-          "address": "support@example.org",
-          "type": "EMAIL"
-        }]  
-      }],
-      "accessAndUseConditions": [{
-        "name": "Data is to be used in accordance with Example ANSP policies.",
-        "description": "Users must comply with all relevant regulations when using the data provided by this service.",
-        "type": "USAGE_CONSTRAINT"
-      }],
-      "validation": [{"type": "COLLABORATIVE_VALIDATION", "description": {"validationSteps": "first step"}}]
+      "abbreviations": [
+        {
+          "name": "ETA",
+          "description": "Estimated Time of Arrival"
+        }
+      ],
+      "accessAndUseConditions": [
+        {
+          "name": "Data is to be used in accordance with Example ANSP policies.",
+          "description": "Users must comply with all relevant regulations when using the data provided by this service.",
+          "type": "SERVICE_POLICY"
+        }
+      ],
+      "validation": 
+        {
+          "description": "COLLABORATIVE_VALIDATION"
+        }
     },
     "informationDescription": {
       "informationDefinition": [
@@ -90,13 +116,24 @@
     },
     "technicalDescription": {
       "behaviour": [
-        { "name": "NormalOperation", "description": "Publishes periodic updates via HTTPS" }
+        {
+          "name": "NormalOperation",
+          "description": "Publishes periodic updates via HTTPS"
+        }
       ],
       "technicalConstraint": [
-        { "name": "MaxPayloadSize", "description": "Maximum payload size of 1MB per request." }
+        {
+          "name": "MaxPayloadSize",
+          "description": "Maximum payload size of 1MB per request."
+        }
       ],
-      "serviceMonitoring": 
-        { "monitoringDescription": "UptimeMonitoring", "reference": {"url":"https://api.example.org/positions","description": "Monitors service uptime and responsiveness."} }
+      "serviceMonitoring": {
+        "monitoringDescription": "UptimeMonitoring",
+        "reference": {
+          "url": "https://api.example.org/positions",
+          "description": "Monitors service uptime and responsiveness."
+        }
+      }
     },
     "references": {
       "implementedStandard": [
@@ -108,14 +145,26 @@
       ]
     },
     "serviceInterface": [
-      {     
+      {
         "name": "Primary API",
         "description": "REST API delivering aeronautical data",
         "provisionSide": "PROVIDER_SIDE",
-        "serviceInterfaceBinding": { "name": "REST_BINDING" },
-        "networkInterfaceBinding": { "name": "HTTPS", "description": "Standard HTTPS binding over TCP/IP" },
+        "swimTIProfile": {
+          "name": "Yellow Profile",
+          "version": "2.0"
+        },
+        "serviceInterfaceBinding": {
+          "name": "SWIM_TI_YP_2_0_WS_LIGHT"
+        },
+        "networkInterfaceBinding": {
+          "name": "HTTPS",
+          "description": "Standard HTTPS binding over TCP/IP"
+        },
         "endpoints": [
-          { "name": "PrimaryEndpoint", "url": "https://api.example.org/positions" }
+          {
+            "name": "PrimaryEndpoint",
+            "url": "https://api.example.org/positions"
+          }
         ],
         "reference": {
           "url": "https://api.example.org/positions",
@@ -125,13 +174,17 @@
           {
             "name": "GetAircraftPositions",
             "description": "Retrieves current positions of all tracked aircraft.",
-            "messages": [{"name": "PositionRequest", "direction": "IN"}],
-            "idempotency": "IDEMPOTENT",
+            "messages": [
+              {
+                "name": "PositionRequest",
+                "direction": "IN"
+              }
+            ],
             "parameters": [
               {
                 "name": "maxResults",
                 "description": "Maximum number of results to return.",
-                "type": "integer" 
+                "type": "integer"
               }
             ]
           }

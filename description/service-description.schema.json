@@ -39,7 +39,7 @@
       "unevaluatedProperties": false,
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/BaseInformationService"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/BaseInformationService"
         },
         {
           "type": "object",
@@ -126,7 +126,7 @@
           "type": "string"
         },
         "reference": {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/Reference"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/Reference"
         }
       }
     },
@@ -160,7 +160,7 @@
       "description": "An entity (person or organization) that offers the use of capabilities by means of a service. [SWIM-SERV-060]",
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceProvider"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceProvider"
         },
         {
           "properties": {
@@ -180,7 +180,7 @@
     "ServiceInterfaceItem": {
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceInterface"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceInterface"
         },
         {
           "required": [
@@ -199,7 +199,7 @@
     "PointOfContact": {
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/BasePointOfContact"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/BasePointOfContact"
         }
       ],
       "required": ["role"]
@@ -208,7 +208,7 @@
       "description": "A taxonomy used to classify a service by the type of service provided or by some other technological or architectural solution. [SWIM-SERV-090, SWIM-SERV-100, SWIM-SERV-110, SWIM-SERV-210]",
       "allOf": [ 
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceCategorisation"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceCategorisation"
         },
         {
           "type": "object",
@@ -252,7 +252,7 @@
       "description": "References to complementary documents that provide additional details about the service. [SWIM-SERV-010, SWIM-SERV-120]",
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceReferences"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceReferences"
         },
         {
           "type": "object",
@@ -270,7 +270,7 @@
       "description": "Description of the service in terms of what it provides, the purpose and under which conditions and quality levels the service is provided. [SWIM-SERV-080, SWIM-SERV-130, SWIM-SERV-140, SWIM-SERV-150, SWIM-SERV-160, SWIM-SERV-180, SWIM-SERV-200, SWIM-SERV-330, SWIM-SERV-350]",
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceGeneralDescription"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceGeneralDescription"
         },
         {
           "type": "object",
@@ -284,7 +284,7 @@
               "description": "Service support point of contact information. [SWIM-SERV-080]",
               "type": "array",
               "items": {
-                "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/BasePointOfContact"
+                "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/BasePointOfContact"
               },
               "minItems": 1
             },
@@ -310,7 +310,7 @@
       "description": "Information for identifying the service. [SWIM-SERV-040]",
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceIdentification"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceIdentification"
         },
         {
           "type": "object",
@@ -333,7 +333,7 @@
       "description": "Description of the technical aspects of the service including data structures, interface and operations behaviour, security mechanisms and technical constraints. Code examples may be also provided to exemplify the usage of the service interfaces to the consumers [SWIM-SERV-170, SWIM-SERV-220, SWIM-SERV-230, SWIM-SERV-340]",
       "allOf": [
         {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceTechnicalDescription"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/ServiceTechnicalDescription"
         },
         {
           "type": "object",
@@ -398,7 +398,7 @@
           }
         },
         "reference": {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/Reference"
+          "$ref": "/service-metadata-schema/common/common-types.schema.json#/$defs/Reference"
         }
       }
     }
