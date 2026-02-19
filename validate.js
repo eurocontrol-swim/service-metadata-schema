@@ -24,9 +24,15 @@ async function run() {
     console.log("✓ GeoJSON GeometryCollection loaded");
 
     // Directly Loads the schemas
+    const referenceCodeTypes = JSON.parse(await fs.promises.readFile("./common/reference-code-types.schema.json", "utf8"));
+
     const commonTypes = JSON.parse(await fs.promises.readFile("./common/common-types.schema.json", "utf8"));
-    //const serviceDescription = JSON.parse(await fs.promises.readFile("./description/service_description.schema.json", "utf8"));
-    const serviceDescription = JSON.parse(await fs.promises.readFile("./definition/service_definition.schema.json", "utf8"));
+    //const serviceDescription = JSON.parse(await fs.promises.readFile("./description/service-description.schema.json", "utf8"));
+    const serviceDescription = JSON.parse(await fs.promises.readFile("./definition/service-definition.schema.json", "utf8"));
+
+    // Registers reference-code-types
+    ajv.addSchema(referenceCodeTypes, referenceCodeTypes.$id || "reference-code-types");
+    console.log("✓ Schema reference-code-types loaded");
 
     // Registers common-types
     ajv.addSchema(commonTypes, commonTypes.$id || "common-types");
@@ -37,7 +43,7 @@ async function run() {
     console.log("✓ Schema service_description compiled\n");
     
     // Loads data for validation
-    const data = JSON.parse(await fs.promises.readFile("./description/test.json", "utf8"));
+    const data = JSON.parse(await fs.promises.readFile("./test.json", "utf8"));
     
     // Validates
     const valid = validate(data);

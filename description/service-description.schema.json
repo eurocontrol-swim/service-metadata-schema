@@ -25,11 +25,11 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "informationService"
+    "informationServiceDescription"
   ],
   "properties": {
-    "informationService": {
-      "description": "The description of a service. [SWIM-SERV-010]",
+    "informationServiceDescription": {
+      "description": "This object holds the set of information elements useful to describe the service in question [SWIM-SERV-010]",
       "$ref": "#/$defs/InformationService"
     }
   },
@@ -44,10 +44,6 @@
         {
           "type": "object",
           "properties": {
-            "documentInformation": {
-              "description": "Metadata about the service description or definition. [SWIM-SERV-030]",
-              "$ref": "#/$defs/DocumentMetadata"
-            },
             "serviceIdentification": {
               "description": "Information for identifying the service. [SWIM-SERV-040]",
               "$ref": "#/$defs/ServiceIdentification"
@@ -82,6 +78,9 @@
             }
           },
           "required": [
+            "title",
+            "referenceDate",
+            "edition",
             "serviceIdentification",
             "serviceProvider",
             "serviceCategorisation",
@@ -92,24 +91,6 @@
           ]
         }
       ]
-    },
-    "DocumentMetadata": {
-      "description": "Was DescriptionInformation. Meta information about the service description or definition.",
-      "allOf": [
-        {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/DocumentMetadata"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "serviceType": {
-              "description": "The type of the document - indicating if it is a Service Description or a Service Definition.",
-              "const": "SERVICE_DESCRIPTION"
-            }
-          }
-        }
-      ],
-      "unevaluatedProperties": false
     },
     "CodeSample": {
       "description": "Information useful for exemplifying how to consume the service. As a minimum, it can be provided either as a decription and code or a description and a reference [SWIM-SERV-340]",
@@ -202,18 +183,6 @@
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceInterface"
         },
         {
-          "type": "object",
-          "properties": {
-            "endpoints": {
-              "type": "array",
-              "description": "The set of fully qualified network addresses at which the interface can be accessed [SWIM-SERV-240]",
-              "items": {
-                "$ref": "#/$defs/Endpoint"
-              }
-            }
-          }
-        },
-        {
           "required": [
             "name",
             "description",
@@ -226,75 +195,6 @@
         }
       ],
       "unevaluatedProperties": false
-    },
-    "Endpoint": {
-      "type": "object",
-      "required": [
-        "url"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "description": "The name of the endpoint",
-          "type": "string"
-        },
-        "description": {
-          "description": "The description of the endpoint",
-          "type": "string"
-        },
-        "reference": {
-          "description": "An external reference where more information or details about the endpoint can be found",
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/Reference"
-        },
-        "resourceType": {
-          "description": "The type of resource that can be accessed via the endpoint",
-          "type": "string"
-        },
-        "url": {
-          "description": "The fully qualified network address at which the endpoint can be accessed",
-          "type": "string",
-          "format": "uri"
-        },
-        "operations": {
-          "description": "In case different operations can be reached through different endpoints, you may indicate here the set of operations that can be accessed via this endpoint. An operation at this level is just a 'pointer' to the operation reported with more details within the informationService/serviceInterface[]/operations array.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "description": "The name of the operation as reported in the informationService/serviceInterface[]/operations array",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "messages": {
-          "description": "In case different messages can be exchanged through different endpoints, you may indicate here which messages are exchanged via this endpoint.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "name",
-              "direction"
-            ],
-            "additionalProperties": false,
-            "properties": {
-              "name": {
-                "description": "The name of the message",
-                "type": "string"
-              },
-              "direction": {
-                "description": "The direction (Input or Output) of the message",
-                "type": "string",
-                "enum": [
-                  "IN",
-                  "OUT"
-                ]
-              }
-            }
-          }
-        }
-      }
     },
     "PointOfContact": {
       "allOf": [
@@ -323,7 +223,7 @@
                 ],
                 "properties": {
                   "lifeCycleStage": {
-                    "$ref": "#/$defs/CodeLifeCycleStepType"
+                    "$ref": "/service-metadata-schema/common/reference-code-types.schema.json#/$defs/CodeLifeCycleStepType"
                   },
                   "from": {
                     "type": "string",
@@ -476,7 +376,7 @@
       "properties": {
         "type": {
           "description": "The validation method used. [SWIM-SERV-200]",
-          "$ref": "#/$defs/CodeServiceValidationType"
+          "$ref": "/service-metadata-schema/common/reference-code-types.schema.json#/$defs/CodeServiceValidationType"
         },
         "description": {
           "description": "The description of the service validation. Including: summary of validation steps, results achieved and pointer to validation evidence. [SWIM-SERV-200]",
@@ -501,16 +401,6 @@
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/Reference"
         }
       }
-    },
-    "CodeLifeCycleStepType": {
-      "description": "A classification of services based on their current, past, or future availability for provisioning. See values: http://reference.swim.aero/information-services/service-categories/CodeLifeCycleStageType.html",
-      "type": "string"
-    },
-    "CodeServiceValidationType": {
-      "description": "A code listing validation methods. See values: https://reference.swim.aero/information-services/service-categories/CodeServiceValidationType.html  [SWIM-SERV-200, SWIM-DEFN-200]",
-      "type": "string",
-      "minLength": 1
-
     }
   }
 }

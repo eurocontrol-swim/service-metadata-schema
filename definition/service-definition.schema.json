@@ -25,11 +25,11 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "informationService"
+    "informationServiceDefinition"
   ],
   "properties": {
-    "informationService": {
-      "description": "The description of a service. [SWIM-DEFN-010]",
+    "informationServiceDefinition": {
+      "description": "This object holds the set of information elements useful to detail the service definition in question [SWIM-DEFN-010]",
       "$ref": "#/$defs/InformationService"
     }
   },
@@ -44,7 +44,9 @@
         }
       ],
       "required": [
-        "documentInformation",
+        "title",
+        "referenceDate",
+        "edition",
         "serviceAbstract",
         "serviceDefinitionProvider",
         "serviceCategorisation",
@@ -55,13 +57,9 @@
         "serviceIdentification"
       ],
       "properties": {
-        "documentInformation": {
-          "description": "Metadata about the service description or definition. [SWIM-SERV-030]",
-          "$ref": "#/$defs/DocumentMetadata"
-        },
-        "serviceAbstract": {
-          "description": "A brief summary of the service offering. [SWIM-DEFN-050]",
-          "type": "string"
+        "serviceIdentification": {
+          "description": "Information for identifying the service being defined. [SWIM-DEFN-040]",
+          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceIdentification"
         },
         "serviceDefinitionProvider": {
           "description": "Description about who developed the service definition, when and how it is supported. [SWIM-DEFN-085]",
@@ -90,33 +88,11 @@
             "$ref": "#/$defs/ServiceInterfaceItem"
           },
           "minItems": 1
-        },
-        "serviceIdentification": {
-          "description": "Information for identifying the service. [SWIM-DEFN-040]",
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceIdentification"
         }
       }
     },
-    "DocumentMetadata": {
-      "description": "Was DescriptionInformation. Meta information about the service description or definition.",
-      "allOf": [
-        {
-          "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/DocumentMetadata"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "serviceType": {
-              "description": "The type of the document - indicating if it is a Service Description or a Service Definition.",
-              "const": "SERVICE_DEFINITION"
-            }
-          }
-        }
-      ],
-      "unevaluatedProperties": false
-    },
     "ServiceDefinitionProvider": {
-      "description": "An entity (person or organization) that offers the use of capabilities by means of a service. [SWIM-DEFN-085]",
+      "description": "An entity (person or organization) that provides the Service Definition. [SWIM-DEFN-085]",
       "allOf": [
         {
           "$ref": "/service-metadata-schema/common-types.schema.json#/$defs/ServiceProvider"
@@ -169,7 +145,7 @@
         {
           "type": "object",
           "properties": {
-            "SwimTIProfile": {
+            "swimTIProfile": {
               "description": "The SWIM TI Profile that has been selected for the implementation of the service interface. [SWIM-DEFN-250]",
               "$ref": "#/$defs/SwimTIProfile"
             }
@@ -178,7 +154,8 @@
             "name",
             "description",
             "provisionSide",
-            "operations"
+            "operations",
+            "swimTIProfile"
           ]
         }
       ],
