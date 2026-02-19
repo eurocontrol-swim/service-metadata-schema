@@ -86,8 +86,7 @@
             "serviceCategorisation",
             "generalDescription",
             "technicalDescription",
-            "serviceInterface",
-            "documentInformation"
+            "serviceInterface"
           ]
         }
       ]
