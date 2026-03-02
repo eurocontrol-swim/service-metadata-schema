@@ -21,7 +21,7 @@
     "title": "Code types Schema for service descriptions and definitions reflecting code lists as published at https://reference.swim.aero/information-services/service-categories.html",
     "description": "This schema contains code types used across the service description and definition schemas.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "/service-metadata-schema/common/v1.0/reference-code-types.schema.json",
+    "$id": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json",
     "$defs": {
         "CodeAccessAndUseConditionType": {
             "description": "A code listing access and use conditions. [SWIM-SERV-150, SWIM-SERV-160, SWIM-DEFN-150, SWIM-DEFN-160]. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodeAccessAndUseConditionType.html",
