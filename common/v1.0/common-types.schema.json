@@ -60,7 +60,7 @@
         },
         "type": {
           "description": "The type of service access or use condition. [SWIM-SERV-150, SWIM-SERV-160, SWIM-DEFN-150, SWIM-DEFN-160]",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeAccessAndUseConditionType"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeAccessAndUseConditionType"
         },
         "description": {
           "description": "Description of the conditions that influence accessing and using the service, such as legal constraint; service policies; service consumption constraints. Concrete access control and other security mechanisms are described in the technical section of the form. [SWIM-SERV-150, SWIM-DEFN-150]",
@@ -129,7 +129,7 @@
       "properties": {
         "documentType": {
           "description": "The type of document. See values: https://reference.swim.aero/information-services/service-categories/CodeDocumentType.html",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeDocumentType"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeDocumentType"
         },
         "title": {
           "description": "The name by which the document is formally known.",
@@ -275,7 +275,7 @@
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeICAORegionType"
+            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeICAORegionType"
           }
         },
         "geometry": {
@@ -467,7 +467,7 @@
         },
         "messageExchangePattern": {
           "description": "The type of primitive MEP implemented by the interface.",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodePrimitiveMessageExchangePatternType"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodePrimitiveMessageExchangePatternType"
         }
       }
     },
@@ -614,7 +614,7 @@
           "properties": {
             "name": {
               "description": "The name of the Binding as specified in the selected SWIM TI Profile. For the serviceInterfaceBinding, the name of the Binding should be provided according to the codes available at https://reference.swim.aero/information-services/service-categories/CodeTIYPServiceInterfaceBindingType.html [SWIM-SERV-250, SWIM-SERV-260]",
-              "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeServiceInterfaceBindingType"
+              "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeServiceInterfaceBindingType"
             }
           },
           "required": [
@@ -854,7 +854,7 @@
           "description": "The type of business activity. See values: http://reference.swim.aero/information-services/service-categories/CodeBusinessActivityType.html [SWIM-SERV-100, SWIM-DEFN-100]",
           "type": "array",
           "items": {
-            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeBusinessActivityType"
+            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeBusinessActivityType"
           },
           "minItems": 1
         },
@@ -862,7 +862,7 @@
           "description": "The types of service consumers that this service is intended to serve. See values: http://reference.swim.aero/information-services/service-categories/CodeStakeholderType.html [SWIM-DEFN-095]",
           "type": "array",
           "items": {
-            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeStakeholderType"
+            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeStakeholderType"
           },
           "minItems": 1
         },
@@ -870,7 +870,7 @@
           "description": "A categorisation of services based on information domains. See values: https://reference.swim.aero/information-services/service-categories/CodeRegulatedInformationExchangeType.html [SWIM-SERV-100, SWIM-DEFN-100]",
           "type": "array",
           "items": {
-            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeInformationExchangeCategory"
+            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeInformationExchangeCategory"
           },
           "minItems": 1
         },
@@ -903,7 +903,7 @@
                 "properties": {
                   "name": {
                     "description": "Name of the Application Message Exchange Pattern. See values: http://reference.swim.aero/information-services/service-categories/CodeApplicationMessageExchangePatternType.html. [SWIM-SERV-210, SWIM-DEFN-210]",
-                    "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeApplicationMessageExchangePatternType"
+                    "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeApplicationMessageExchangePatternType"
                   }
                 }
               }
@@ -1159,7 +1159,7 @@
           "description": "The type of the provider. [SWIM-SERV-060]",
           "type": "array",
           "items": {
-            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/reference-code-types.schema.json#/$defs/CodeStakeholderType"
+            "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeStakeholderType"
           },
           "minItems": 1
         }
