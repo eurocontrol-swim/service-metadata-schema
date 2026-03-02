@@ -54,20 +54,6 @@ async function run() {
     service = null;
     data = null;
 
-    if (validationType === "description") {
-      service = JSON.parse(await fs.promises.readFile("./description/v3.0/service-description.schema.json", "utf8"));
-      // Loads data for validation
-      data = JSON.parse(await fs.promises.readFile("./testDescription.json", "utf8"));
-    }
-    if (validationType === "definition") {
-      service = JSON.parse(await fs.promises.readFile("./definition/v3.0/service-definition.schema.json", "utf8"));
-      // Loads data for validation
-      data = JSON.parse(await fs.promises.readFile("./testDefinition.json", "utf8"));
-    }
-    if (validationType === "") {
-      throw new Error("No valid choice made for validation. Please choose either 1 or 2.");
-    }
-
     // Registers reference-code-types
     ajv.addSchema(referenceCodeTypes, referenceCodeTypes.$id || "reference-code-types");
     console.log("✓ Schema reference-code-types loaded");
@@ -76,6 +62,23 @@ async function run() {
     ajv.addSchema(commonTypes, commonTypes.$id || "common-types");
     console.log("✓ Schema common-types loaded");
 
+    if (validationType === "description") {
+      service = JSON.parse(await fs.promises.readFile("./description/v3.0/service-description.schema.json", "utf8"));
+      // Loads data for validation
+      var path = "./testDescription.json";
+      data = JSON.parse(await fs.promises.readFile(path, "utf8"));
+      console.log("✓ Loaded file to validate at path:", path);
+    }
+    if (validationType === "definition") {
+      service = JSON.parse(await fs.promises.readFile("./definition/v3.0/service-definition.schema.json", "utf8"));
+      // Loads data for validation
+      var path = "./testDefinition.json";
+      data = JSON.parse(await fs.promises.readFile(path, "utf8"));
+      console.log("✓ Loaded file to validate at path:", path);
+    }
+    if (validationType === "") {
+      throw new Error("No valid choice made for validation. Please choose either 1 or 2.");
+    }
     // Compiles service_description
     const validate = ajv.compile(service);
     console.log("✓ Service Schema compiled\n");

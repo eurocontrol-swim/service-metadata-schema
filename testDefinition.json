@@ -1,7 +1,6 @@
 {
   "informationServiceDefinition": {
-    "$schema": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/definition/v3.0/service-definition.schema.json",
-    "serviceAbstract": "This is an example aeronautical service description for testing purposes. ",
+    "serviceAbstract": "This is an example aeronautical service description for testing purposes.",
     "title": "Example Service Description",
     "referenceDate": "2025-11-26",
     "edition": "1",
