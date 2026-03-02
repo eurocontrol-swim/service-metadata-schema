@@ -351,7 +351,7 @@
       "unevaluatedProperties": false
     },
     "ValidationOfService": {
-      "description": "An activity whereby a service is checked for conformance with the service objectives and requirements. Note: the service objectives and requirements are captured in the service overview and the technical specifications. If the service has not been validated, this should be indicated in the 'type' property. If it has been validated, [SWIM-SERV-200]",
+      "description": "An activity whereby a service is checked for conformance with the service objectives and requirements. Note: the service objectives and requirements are captured in the service overview and the technical specifications. If the service has not been validated, this should be indicated in the 'type' property indicating NOT_VALIDATED. If it has been validated, a description of the validation activities (or a reference to external documentation where this info may be found) should be provided [SWIM-SERV-200]",
       "type": "object",
       "additionalProperties": false,
       "required": [
