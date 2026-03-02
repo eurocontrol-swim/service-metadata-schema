@@ -43,24 +43,24 @@ async function run() {
 
   try {
 
-    const geoJsonSchema = JSON.parse(await fs.promises.readFile("./common/GeometryCollection.json", "utf8"));
+    const geoJsonSchema = JSON.parse(await fs.promises.readFile("./common/v1.0/GeometryCollection.json", "utf8"));
     ajv.addSchema(geoJsonSchema);
     console.log("✓ GeoJSON GeometryCollection loaded");
 
     // Directly Loads the schemas
-    const referenceCodeTypes = JSON.parse(await fs.promises.readFile("./common/reference-code-types.schema.json", "utf8"));
+    const referenceCodeTypes = JSON.parse(await fs.promises.readFile("./common/v1.0/reference-code-types.schema.json", "utf8"));
 
-    const commonTypes = JSON.parse(await fs.promises.readFile("./common/common-types.schema.json", "utf8"));
+    const commonTypes = JSON.parse(await fs.promises.readFile("./common/v1.0/common-types.schema.json", "utf8"));
     service = null;
     data = null;
 
     if (validationType === "description") {
-      service = JSON.parse(await fs.promises.readFile("./description/service-description.schema.json", "utf8"));
+      service = JSON.parse(await fs.promises.readFile("./description/v3.0/service-description.schema.json", "utf8"));
       // Loads data for validation
       data = JSON.parse(await fs.promises.readFile("./testDescription.json", "utf8"));
     }
     if (validationType === "definition") {
-      service = JSON.parse(await fs.promises.readFile("./definition/service-definition.schema.json", "utf8"));
+      service = JSON.parse(await fs.promises.readFile("./definition/v3.0/service-definition.schema.json", "utf8"));
       // Loads data for validation
       data = JSON.parse(await fs.promises.readFile("./testDefinition.json", "utf8"));
     }

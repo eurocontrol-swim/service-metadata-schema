@@ -21,7 +21,7 @@
   "title": "Common types for Schema for service descriptions and definitions",
   "description": "This schema contains common types used across the service description and definition schemas.",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/common-types.schema.json",
+  "$id": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json",
   "$defs": {
     "Abbreviation": {
       "description": "An abbreviation or acronym used by the service description or definition. [SWIM-SERV-350, SWIM-DEFN-350]",
