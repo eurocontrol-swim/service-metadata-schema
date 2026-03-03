@@ -59,7 +59,7 @@
       "properties": {
         "serviceIdentification": {
           "description": "Information for identifying the service being defined. [SWIM-DEFN-040]",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceIdentification"
+          "$ref": "#/$defs/ServiceIdentification"
         },
         "serviceDefinitionProvider": {
           "description": "Description about who developed the service definition, when and how it is supported. [SWIM-DEFN-085]",
@@ -75,7 +75,7 @@
         },
         "technicalDescription": {
           "description": "A container for information about the security mechanisms, technical constraints and monitoring of the information service. [SWIM-DEFN-220, SWIM-DEFN-230]",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceTechnicalDescription"
+          "$ref": "#/$defs/ServiceTechnicalDescription"
         },
         "references": {
           "description": "A container for references to documents describing specific aspects of the service instance. [SWIM-DEFN-010, SWIM-DEFN-120]",
@@ -229,6 +229,24 @@
       "allOf": [
         {
           "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceReferences"
+        }
+      ]
+    },
+    "ServiceIdentification": {
+      "description": "Information for identifying the service being defined. [SWIM-DEFN-040]",
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceIdentification"
+        }
+      ]
+    },
+    "ServiceTechnicalDescription": {
+      "description": "A container for information about the security mechanisms, technical constraints and monitoring of the information service. [SWIM-DEFN-220, SWIM-DEFN-230]",
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceTechnicalDescription"
         }
       ]
     }
