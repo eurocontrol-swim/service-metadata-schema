@@ -79,7 +79,7 @@
         },
         "references": {
           "description": "A container for references to documents describing specific aspects of the service instance. [SWIM-DEFN-010, SWIM-DEFN-120]",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceReferences"
+          "$ref": "#/$defs/ServiceReferences"
         },
         "serviceInterface": {
           "description": "The means by which the underlying capabilities of a service are accessed. [SWIM-DEFN-240, SWIM-DEFN-250, SWIM-DEFN-270, SWIM-DEFN-280, SWIM-DEFN-320]",
@@ -112,7 +112,7 @@
       ],
       "unevaluatedProperties": false
     },
-    "SwimTIProfile":{
+    "SwimTIProfile": {
       "description": "The SWIM TI Profile that has been selected for the implementation of the service interface. [SWIM-DEFN-250]",
       "type": "object",
       "additionalProperties": false,
@@ -163,7 +163,7 @@
     },
     "ServiceCategorisation": {
       "description": "A taxonomy used to classify a service by the type of service provided or by some other technological or architectural solution. [SWIM-SERV-090, SWIM-DEFN-095, SWIM-SERV-100, SWIM-SERV-110, SWIM-SERV-210]",
-      "allOf": [ 
+      "allOf": [
         {
           "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceCategorisation"
         },
@@ -195,7 +195,7 @@
         },
         {
           "type": "object",
-          "properties"  : {
+          "properties": {
             "validation": {
               "description": "Activity whereby a service is checked for conformance with the service objectives and requirements. [SWIM-DEFN-200]",
               "$ref": "#/$defs/ValidationOfService"
@@ -203,7 +203,7 @@
           },
           "required": [
             "qualityOfData"
-          ] 
+          ]
         }
       ],
       "unevaluatedProperties": false
@@ -222,6 +222,15 @@
         }
       },
       "minProperties": 1
+    },
+    "ServiceReferences": {
+      "description": "References to complementary documents that provide additional details about the service. [SWIM-DEFN-010, SWIM-DEFN-120]",
+      "unevaluatedProperties": false,
+      "allOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceReferences"
+        }
+      ]
     }
   }
 }
