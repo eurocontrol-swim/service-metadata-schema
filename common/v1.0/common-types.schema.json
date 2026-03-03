@@ -1145,18 +1145,19 @@
       "properties": {
         "name": {
           "description": "The full official name of the organisation. [SWIM-SERV-060, SWIM-DEFN-085]",
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "abbreviation": {
           "description": "The abbreviated name of the organisation. [SWIM-SERV-060, SWIM-DEFN-085]",
           "type": "string"
         },
         "description": {
-          "description": "Description of the organisation responsible for the service. [SWIM-SERV-060, SWIM-DEFN-085]",
+          "description": "Description of the organisation responsible for the service. Note that this property may be left blank when editing/uploading the Service on the SWIM Registry. This because, in that case, the property will be overwritten with information extracted from the Registry 'back-end' [SWIM-SERV-060, SWIM-DEFN-085]",
           "type": "string"
         },
         "type": {
-          "description": "The type of the provider. [SWIM-SERV-060]",
+          "description": "The type of the provider.  Note that this property may be 'skipped' when editing/uploading the Service on the SWIM Registry. This because, in that case, the property will be valued with information extracted from the Registry 'back-end' [SWIM-SERV-060]",
           "type": "array",
           "items": {
             "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeStakeholderType"
