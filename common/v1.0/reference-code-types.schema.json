@@ -424,7 +424,7 @@
                     "description": "Airspace User under the authority of a military organisation."
                 },
                 {
-                    "const": "CIVIL_AIR_NAVIGATION_SERVICE_PROVIDER ",
+                    "const": "CIVIL_AIR_NAVIGATION_SERVICE_PROVIDER",
                     "description": "Any public or private entity providing air navigation services for general air traffic."
                 },
                 {
