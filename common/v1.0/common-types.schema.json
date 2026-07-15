@@ -467,7 +467,7 @@
         },
         "messageExchangePattern": {
           "description": "The type of primitive MEP implemented by the interface.",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodePrimitiveMessageExchangePatternType"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/reference-code-types.schema.json#/$defs/CodePrimitiveMessageExchangePatternType"
         }
       }
     },
