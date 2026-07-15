@@ -1,0 +1,529 @@
+{
+    "copyright": [
+        "Copyright 2025 EUROCONTROL",
+        "==========================================",
+        "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:",
+        "1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.",
+        "2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer ",
+        "   in the documentation and/or other materials provided with the distribution.",
+        "3. Neither the name of the copyright holder nor the names of its contributors may be used to",
+        "   endorse or promote products derived from this software without specific prior written permission.",
+        "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS-IS AND ANY EXPRESS OR IMPLIED WARRANTIES,",
+        "INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.",
+        "IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES",
+        "(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)",
+        "HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT",
+        "(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+        "==========================================",
+        "Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: http://opensource.org/licenses/BSD-3-Clause",
+        "Details on EUROCONTROL: http://www.eurocontrol.int"
+    ],
+    "title": "Code types Schema for service descriptions and definitions reflecting code lists as published at https://reference.swim.aero/information-services/service-categories.html",
+    "description": "This schema contains code types used across the service description and definition schemas.",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json",
+    "$defs": {
+        "CodeAccessAndUseConditionType": {
+            "description": "A code listing access and use conditions. [SWIM-SERV-150, SWIM-SERV-160, SWIM-DEFN-150, SWIM-DEFN-160]. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodeAccessAndUseConditionType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "LEGAL_CONSTRAINT",
+                    "description": "Restrictions and legal prerequisites for accessing and using the service."
+                },
+                {
+                    "const": "SERVICE_POLICY",
+                    "description": "A policy governing the access and uses of one or more services."
+                },
+                {
+                    "const": "SERVICE_CONSUMPTION_CONSTRAINT",
+                    "description": "Restrictions on the consumption of the service."
+                },
+                {
+                    "const": "SECURITY_CONSTRAINT",
+                    "description": "Handling restrictions imposed on the service for national security or similar security concerns."
+                }
+            ]
+        },
+        "CodeDocumentType": {
+            "description": "A code describing types of documents. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodeDocumentType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "POLICY_DOCUMENT",
+                    "description": "A policy governing e.g. the access and uses of one or more services."
+                },
+                {
+                    "const": "SERVICE_STANDARD",
+                    "description": "A document, issued by a community of interest, used to harmonize service implementations."
+                },
+                {
+                    "const": "QUALITY_OF_SERVICE_DOCUMENT",
+                    "description": "A document containing statements on the quality of service."
+                },
+                {
+                    "const": "SERVICE_MODEL",
+                    "description": "A model view, expressed using a formal and standardised notation, that formalises the representation of the business logic of its service interfaces, service operations, service behaviour and exchanged information."
+                },
+                {
+                    "const": "SERVICE_CERTIFICATION",
+                    "description": "A service certification."
+                },
+                {
+                    "const": "CODE_EXAMPLE",
+                    "description": "Examples of code exemplifying the implementation of the consuming service interface."
+                },
+                {
+                    "const": "SERVICE_BEHAVIOUR_DESCRIPTION",
+                    "description": "A description of the service behaviour."
+                },
+                {
+                    "const": "PROTOCOL_SPECIFICATION",
+                    "description": "A specification of the service interface protocols."
+                },
+                {
+                    "const": "MACHINE_READABLE_SERVICE_DESCRIPTION",
+                    "description": "A service interface definition in a machine-readable format using a standard service definition formalism/language."
+                },
+                {
+                    "const": "SERVICE_SPECIFICATION",
+                    "description": "A specification used in the implementation of the service."
+                },
+                {
+                    "const": "MESSAGE_EXAMPLE",
+                    "description": "An example of the messages used by the service."
+                },
+                {
+                    "const": "SERVICE_VALIDATION_REPORT",
+                    "description": "A report on the result of the activities whereby a service is checked for conformance with the service objectives and requirements."
+                },
+                {
+                    "const": "SEMANTIC_CORRESPONDENCE_REPORT",
+                    "description": "A report containing the semantic correspondences between an information definition and the ATM Information Reference Model."
+                },
+                {
+                    "const": "INFORMATION_DEFINITION",
+                    "description": "A formal description of exchanged information."
+                },
+                {
+                    "const": "OTHER",
+                    "description": "A document of a type not covered by a value in this list."
+                }
+            ]
+        },
+        "CodeICAORegionType": {
+            "description": "The list of ICAO Regions as defined in Appendix 1 to the Directives to Regional Air Navigation Meetings and Rules of Procedure for their Conduct (ICAO Doc 8-AN/874). Values extracted from: http://reference.swim.aero/information-services/service-categories/CodeICAORegionType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "AFI",
+                    "description": "AFRICA-INDIAN OCEAN region. The area embracing Africa and associated oceanic areas and land masses between 25 degrees W and 75 degrees E and south to the South Pole."
+                },
+                {
+                    "const": "ASIA",
+                    "description": "ASIA region. The area south of the Asian part of the USSR territory, and embracing Pakistan, Japan and New Zealand, and associated oceanic areas and land masses eastward from 75 degrees E to 175 degrees W, to the South Pole."
+                },
+                {
+                    "const": "CAR",
+                    "description": "CARIBBEAN region. The area embracing Mexico, Central America, the Bahamas and the West Indies."
+                },
+                {
+                    "const": "EUR",
+                    "description": "EUROPEAN region. The area embracing Europe and the Asian part of the USSR territory, north to the North Pole, and including Turkey."
+                },
+                {
+                    "const": "MID",
+                    "description": "MIDDLE EAST region. The area embracing that part of Asia west of Pakistan, but excluding Turkey and USSR territory."
+                },
+                {
+                    "const": "NAM",
+                    "description": "NORTH AMERICAN region. The area embracing the United States and Canada and north to the North Pole."
+                },
+                {
+                    "const": "NAT",
+                    "description": "NORTH ATLANTIC region. The North Atlantic area not covered by the NAM, CAR, SAM, EUR and AFI Regions, and north to the North Pole."
+                },
+                {
+                    "const": "PAC",
+                    "description": "PACIFIC region. The Pacific area not covered by the NAM, CAR, SAM and ASIA Regions, and south to the South Pole."
+                },
+                {
+                    "const": "SAM",
+                    "description": "SOUTH AMERICAN region. The area embracing South America and the associated oceanic areas and land masses between 25 degrees W and 90 degrees W and south to the South Pole."
+                }
+            ]
+        },
+        "CodeInformationExchangeCategory": {
+            "description": "A categorisation of services based on information domains. [SWIM-SERV-100]. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodeRegulatedInformationExchangeType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "AERONAUTICAL_INFORMATION_EXCHANGE",
+                    "description": "The Aeronautical information exchange regulated in Commission Implementing Regulation (EU) 2021/116, Common Project One."
+                },
+                {
+                    "const": "METEOROLOGICAL_INFORMATION_EXCHANGE",
+                    "description": "The Meteorological information exchange regulated in Commission Implementing Regulation (EU) 2021/116, Common Project One."
+                },
+                {
+                    "const": "COOPERATIVE_NETWORK_INFORMATION_EXCHANGE",
+                    "description": "The Cooperative network information exchange regulated in Commission Implementing Regulation (EU) 2021/116, Common Project One."
+                },
+                {
+                    "const": "FLIGHT_INFORMATION_EXCHANGE",
+                    "description": "The Flight information exchange regulated in Commission Implementing Regulation (EU) 2021/116, Common Project One."
+                },
+                {
+                    "const": "SWIM_INFRASTRUCTURE_EXCHANGE",
+                    "description": "The Common infrastructure components regulated in Commission Implementing Regulation (EU) No 716/2014, Pilot Common Project."
+                }
+            ]
+        },
+        "CodePrimitiveMessageExchangePatternType": {
+            "description": "A code listing types of primitive message exchange patterns. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodePrimitiveMessageExchangePatternType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "FIRE_AND_FORGET",
+                    "description": "A primitive message exchange pattern consisting of a message being sent from one infrastructure service to another."
+                },
+                {
+                    "const": "SYNCHRONOUS_REQUEST_RESPONSE",
+                    "description": "A primitive MEP consisting of 1) a message (request) being sent from a consumer infrastructure service to a provider infrastructure service, 2) the consumer infrastructure service remaining blocked awaiting for a response and the provider infrastructure service remaining blocked processing the response and 3) a message (response) being sent from the provider infrastructure service to the consumer infrastructure service."
+                }
+            ]
+        },
+        "CodeServiceInterfaceBindingType": {
+            "description": "A code listing the interface bindings that enable services to exchange data with consuming applications. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodeTIYPServiceInterfaceBindingType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "SWIM_TI_YP_1_0_WS_LIGHT",
+                    "description": "The WS Light Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS_LIGHT",
+                    "description": "The WS Light Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS_LIGHT",
+                    "description": "The WS Light Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS_LIGHT_WITH_MESSAGE_SECURITY",
+                    "description": "The WS Light with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS_SOAP",
+                    "description": "The WS SOAP Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS_SOAP",
+                    "description": "The WS SOAP Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS_SOAP",
+                    "description": "The WS SOAP Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+                    "description": "The WS SOAP with Basic Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+                    "description": "The WS SOAP with Basic Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+                    "description": "The WS SOAP with Basic Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS_SOAP_WITH_MESSAGE_SECURITY",
+                    "description": "The WS SOAP with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS_SOAP_WITH_MESSAGE_SECURITY",
+                    "description": "The WS SOAP with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS_SOAP_WITH_MESSAGE_SECURITY",
+                    "description": "The WS SOAP with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS_SOAP_WITH_FEDERATED_SECURITY",
+                    "description": "The WS SOAP with Federated Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS_SOAP_WITH_FEDERATED_SECURITY",
+                    "description": "The WS SOAP with Federated Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS_SOAP_WITH_FEDERATED_SECURITY",
+                    "description": "The WS SOAP with Federated Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS-N_SOAP",
+                    "description": "The WS-N SOAP Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS-N_SOAP",
+                    "description": "The WS-N SOAP Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS-N_SOAP",
+                    "description": "The WS-N SOAP Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS-N_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+                    "description": "The WS-N SOAP with Basic Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS-N_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+                    "description": "The WS-N SOAP with Basic Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS-N_SOAP_WITH_BASIC_MESSAGE_SECURITY",
+                    "description": "The WS-N SOAP with Basic Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS-N_SOAP_WITH_MESSAGE_SECURITY",
+                    "description": "The WS-N SOAP with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS-N_SOAP_WITH_MESSAGE_SECURITY",
+                    "description": "The WS-N SOAP with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS-N_SOAP_WITH_MESSAGE_SECURITY",
+                    "description": "The WS-N SOAP with Message Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_WS-N_SOAP_WITH_FEDERATED_SECURITY",
+                    "description": "The WS-N SOAP with Federated Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_WS-N_SOAP_WITH_FEDERATED_SECURITY",
+                    "description": "The WS-N SOAP with Federated Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_WS-N_SOAP_WITH_FEDERATED_SECURITY",
+                    "description": "The WS-N SOAP with Federated Security Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_0_AMQP_MESSAGING",
+                    "description": "The AMQP Messaging Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_1_1_AMQP_MESSAGING",
+                    "description": "The AMQP Messaging Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition1.1."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_AMQP_MESSAGING",
+                    "description": "The AMQP Messaging Interface Binding as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                },
+                {
+                    "const": "SWIM_TI_YP_2_0_AMQP_MESSAGING_WITH_MESSAGE_SECURITY",
+                    "description": "The AMQP Messaging Interface Binding with Message Security as detailed in the EUROCONTROL Specification for SWIM Technical Infrastructure Yellow Profile, edition2.0."
+                }
+            ]
+        },
+        "CodeBusinessActivityType": {
+            "description": "A code listing the types of business activities. Values extracted from: http://reference.swim.aero/information-services/service-categories/CodeBusinessActivityType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "AERODROME_OPERATION",
+                    "description": "Aerodrome operations describe the aerodrome functionality within the ATM system in terms of such factors as information acquisition and delivery, facility access, demand on airspace, and limits on usability."
+                },
+                {
+                    "const": "AIRSPACE_ORGANISATION_AND_MANAGEMENT",
+                    "description": "Design and management of airspace structures (e.g. P/D/R,TSA/CBA, En Route/TMA Sectors, Free Route Airspace, etc.), and routes (SID/STAR RNAV/RNP routes)."
+                },
+                {
+                    "const": "AIRSPACE_USER_OPERATIONS",
+                    "description": "Airspace user operations refer to the ATM-related aspects of flight operations."
+                },
+                {
+                    "const": "COMMUNICATION_NAVIGATION_SURVEILLANCE",
+                    "description": "Communication, Navigation, Surveillance."
+                },
+                {
+                    "const": "CONFLICT_MANAGEMENT",
+                    "description": "Conflict management includes strategic de-confliction, separation provision and collision avoidance of traffic. It also includes the mitigation of hazards due to adverse weather conditions and foreign objects."
+                },
+                {
+                    "const": "DEMAND_AND_CAPACITY_BALANCING",
+                    "description": "Assessment and balancing of demand and capacity at network and airport level to provide the NOP/AOP for the day of operation."
+                },
+                {
+                    "const": "INFORMATION_MANAGEMENT",
+                    "description": "The provision of the right information to stakeholders at the time that it is needed."
+                },
+                {
+                    "const": "SERVICE_DELIVERY_MANAGEMENT",
+                    "description": "Management of the overall service delivery of ATM by balancing and consolidating the provision of the services from the other areas of AOM (Airspace Organisation and Management), AUO (Airspace User Operations), DCB (Demand Capacity Balancing), TS (Traffic Synchronisation), CM (Conflict Management), and AO (Aerodrome Operations)."
+                },
+                {
+                    "const": "TRAFFIC_SYNCHRONISATION",
+                    "description": "Synchronisation of arrivals and departures with surface operations."
+                }
+            ]
+        },
+        "CodeApplicationMessageExchangePatternType": {
+            "description": "A code listing types of application message exchange patterns. Values extracted from: http://reference.swim.aero/information-services/service-categories/CodeApplicationMessageExchangePatternType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "REQUEST_REPLY",
+                    "description": "An application MEP consisting of a consumer sending a request to an information service, the service then executing the request and providing a reply to the consumer."
+                },
+                {
+                    "const": "ONE_WAY",
+                    "description": "An application MEP consisting of a consumer sending a message to an information service without any requisite response from the information service."
+                },
+                {
+                    "const": "PUBLISH_SUBSCRIBE",
+                    "description": "An application MEP consisting of a consumer sending a subscription request to an information service, the service then providing the consumer with means to access the subscribed information."
+                },
+                {
+                    "const": "FAN_OUT",
+                    "description": "An application MEP consisting of a consumer sending sequentially a message to multiple information service according to the One-Way application MEP."
+                },
+                {
+                    "const": "SYNCHRONOUS_REQUEST_REPLY",
+                    "description": "A Request/Reply application MEP requiring that the consumer wait for the information service to provide a response, and is unable to send/receive any other requests/responses until the initial response is received."
+                },
+                {
+                    "const": "ASYNCHRONOUS_REQUEST_REPLY",
+                    "description": "A Request/Reply application MEP that does not restrict the consumer from completing other operations while waiting for the information service to respond."
+                },
+                {
+                    "const": "PUBLISH_SUBSCRIBE_WITH_PUSH_MECHANISM",
+                    "description": "A Publish/Subscribe pattern whereby the information service sends necessary updates (publish) to the consumer, in accordance with the subscription."
+                },
+                {
+                    "const": "PUBLISH_SUBSCRIBE_WITH_PULL_MECHANISM",
+                    "description": "A Publish/Subscribe pattern whereby the information service keeps necessary updates available to the consumer, in accordance with the subscription."
+                },
+                {
+                    "const": "BROKERED_PUBLISH_SUBSCRIBE_WITH_PUSH_MECHANISM",
+                    "description": "A Publish/Subscribe pattern with push mechanism introducing a layer of decoupling between the publisher and subscribers by means of a broker."
+                }
+            ]
+        },
+        "CodeStakeholderType": {
+            "description": "A code listing types of stakeholders. Values extracted from: http://reference.swim.aero/information-services/service-categories/CodeStakeholderType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "CIVIL_AIRSPACE_USER",
+                    "description": "A generic term designating an organization operating aircraft and its pilots, the flight operations centres (FOC) responsible for the strategic planning of a flight and the entity responsible for the execution of a flight which is traditionally a flight deck."
+                },
+                {
+                    "const": "MILITARY_AIRSPACE_USER",
+                    "description": "Airspace User under the authority of a military organisation."
+                },
+                {
+                    "const": "CIVIL_AIR_NAVIGATION_SERVICE_PROVIDER",
+                    "description": "Any public or private entity providing air navigation services for general air traffic."
+                },
+                {
+                    "const": "MILITARY_AIR_NAVIGATION_SERVICE_PROVIDER",
+                    "description": "Any public or private entity providing air navigation services for military air traffic."
+                },
+                {
+                    "const": "AIR_TRAFFIC_SERVICE_PROVIDER",
+                    "description": "A generic term meaning variously, flight information service, alerting service, air traffic advisory service, air traffic control service (area control service, approach control service or aerodrome control service)."
+                },
+                {
+                    "const": "REGULATED_METEOROLOGICAL_SERVICE_PROVIDER",
+                    "description": "An office designated to provide meteorological service for international air navigation."
+                },
+                {
+                    "const": "AERONAUTICAL_INFORMATION_SERVICE_PROVIDER",
+                    "description": "A service established within the defined area of coverage responsible for the provision of aeronautical information/data necessary for the safety, regularity and efficiency of air navigation."
+                },
+                {
+                    "const": "COMMUNICATION_NAVIGATION_AND_SURVEILLANCE_SERVICE_PROVIDER",
+                    "description": "A provider of CNS services."
+                },
+                {
+                    "const": "PROVIDER_OF_DATA_SERVICES",
+                    "description": "A public or private entity responsible for the management of a Data Service Provision to one or several Virtual Centre."
+                },
+                {
+                    "const": "NETWORK_MANAGER",
+                    "description": "The organization responsible for enabling the optimum use of airspace and ensure that Airspace Users can operate preferred trajectories while allowing maximum access to airspaces and air navigation services."
+                },
+                {
+                    "const": "AIRPORT_OPERATOR",
+                    "description": "The civilian or military agency, group or individual which exercises control over the operations of the civil airport or military airfield."
+                },
+                {
+                    "const": "AIRSIDE_GROUND_HANDLER",
+                    "description": "A stakeholder involved in the services necessary for an aircraft's arrival at, and departure from, an airport, other than air traffic services."
+                },
+                {
+                    "const": "MILITARY_DEFENCE_CENTRE",
+                    "description": "A military defence centre."
+                },
+                {
+                    "const": "OVERSIGHT_AUTHORITY",
+                    "description": "Any entity responsible for monitoring, regulating, and ensuring compliance with laws, policies and standards within a particular field or organisation."
+                },
+                {
+                    "const": "FFICE_SERVICES_UNIT",
+                    "description": "A unit designated by the appropriate ATS authority for the provision of FF-ICE services."
+                },
+                {
+                    "const": "UAS_GEOGRAPHICAL_ZONES_PROVIDER",
+                    "description": "An entity delegated by the competent authority of a Member State, pursuant to Article 15 of Commission Implementing Regulation (EU) 2019/947, to make available information on UAS geographical zones in a common digital format via officially approved information services."
+                }
+            ]
+        },
+        "CodeLifeCycleStepType": {
+            "description": "A classification of services based on their current, past, or future availability for provisioning. Values extracted from: http://reference.swim.aero/information-services/service-categories/CodeLifeCycleStageType.html",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "OPERATIONAL",
+                    "description": "The status indicating that the service is employed in its operational environment."
+                },
+                {
+                    "const": "PROSPECTIVE",
+                    "description": "The status indicating that the service is being designed, developed, or tested for operational activities and is expected to be available in the future."
+                },
+                {
+                    "const": "RETIRED",
+                    "description": "The status indicating that active support for the service has been withdrawn, the service has been partially or totally replaced by a new service, or an upgraded service has been installed."
+                }
+            ]
+        },
+        "CodeServiceValidationType": {
+            "description": "A code listing validation methods. Values extracted from: https://reference.swim.aero/information-services/service-categories/CodeServiceValidationType.html  [SWIM-SERV-200, SWIM-DEFN-200]",
+            "type": "string",
+            "anyOf": [
+                {
+                    "const": "COLLABORATIVE_VALIDATION",
+                    "description": "A validation of service jointly carried out by the service provider together with service users."
+                },
+                {
+                    "const": "INDEPENDENT_VALIDATION",
+                    "description": "A validation of service carried out by an independent authority."
+                },
+                {
+                    "const": "SELF_VALIDATION",
+                    "description": "A validation of service carried out by the service provider."
+                },
+                {
+                    "const": "USER_VALIDATION",
+                    "description": "A validation of service carried out by service users."
+                },
+                {
+                    "const": "NOT_VALIDATED",
+                    "description": "A statement that no validation of service has taken place."
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,226 @@
+{
+  "informationServiceDescription": {
+    "serviceAbstract": "This is an example aeronautical service description for testing purposes.",
+    "title": "Example Service Description",
+    "referenceDate": "2025-11-26",
+    "edition": "1",
+    "serviceIdentification": {
+      "name": "Example Aeronautical Service",
+      "version": "1.0"
+    },
+    "serviceProvider": {
+      "name": "Example ANSP",
+      "description": "Example Air Navigation Service Provider delivering test data",
+      "abbreviation": "E-ANSP",
+      "pointOfContact": [
+        {
+          "name": "John Doe",
+          "role": "SERVICE_MANAGER",
+          "contactInformation": [
+            {
+              "address": "xxx",
+              "type": "EMAIL"
+            }
+          ]
+        }
+      ]
+    },
+    "serviceCategorisation": {
+      "lifeCycle": [
+        {
+          "lifeCycleStage": "OPERATIONAL",
+          "from": "2025-01-01"
+        }
+      ],
+      "informationCategory": [
+        "AERONAUTICAL_INFORMATION_EXCHANGE"
+      ],
+      "applicationMessageExchangePattern": [
+        {
+          "name": "REQUEST_REPLY"
+        }
+      ],
+      "geospatialCategorisation": {
+        "description": "EUROCONTROL region"
+      }
+    },
+    "generalDescription": {
+      "dateInOperation": "2025-01-01",
+      "serviceSupport": [{
+        "name": "Service support provided by Example ANSP",
+        "contactInformation": [
+          {
+            "type": "EMAIL",
+            "address": "jane.smith@example.com"
+          }
+        ]
+      }],
+      "operationalEnvironment": {
+        "operationalNeeds": [
+          {
+            "name": "Support tactical planning",
+            "description": "Provides real-time positions to support tactical planning activities."
+          }
+        ],
+        "capabilities": [
+          {
+            "name": "Traffic Situational Awareness",
+            "description": "Provides real-time traffic situational awareness."
+          }
+        ]
+      },
+      "functionality": [
+        {
+          "name": "Provide aeronautical positions",
+          "description": "Delivers periodic position updates for aircraft of interest.",
+          "realWorldEffect": "Improved situational awareness for consumers"
+        }
+      ],
+      "qualitiesOfService": {
+        "performance": [
+          {
+            "name": "Low latency",
+            "description": "Ensures minimal delay in data transmission."
+          }
+        ],
+        "reliability": [
+          {
+            "name": "High availability",
+            "description": "Service is available 99.9% of the time."
+          }
+        ],
+        "security": [
+          {
+            "name": "TLS encrypted",
+            "description": "Data is encrypted using TLS protocol."
+          }
+        ]
+      },
+      "qualityOfData": [
+        {
+          "name": "Position accuracy",
+          "description": "Positions are accurate to within 5 meters."
+        }
+      ],
+      "abbreviations": [
+        {
+          "name": "ETA",
+          "description": "Estimated Time of Arrival"
+        }
+      ],
+      "accessAndUseConditions": [
+        {
+          "name": "Data is to be used in accordance with Example ANSP policies.",
+          "description": "Users must comply with all relevant regulations when using the data provided by this service.",
+          "type": "SERVICE_POLICY"
+        }
+      ],
+      "validation": [
+        {
+          "type": "COLLABORATIVE_VALIDATION",
+          "description": {
+            "validationSteps": "Collaborative validation with consumers",
+            "validationResults": "Validation is performed collaboratively with consumers to ensure the service meets their needs and expectations.",
+            "evidence": "Validation results and feedback are documented and shared with stakeholders to demonstrate the service's effectiveness and identify areas for improvement."
+          }
+        }
+      ]
+    },
+    "informationDescription": {
+      "informationDefinition": [
+        {
+          "name": "AircraftPosition",
+          "definition": "Latitude/longitude and other positional data for an aircraft.",
+          "airmCorrespondence": "Position element in AIRM",
+          "datatype": "object"
+        }
+      ]
+    },
+    "technicalDescription": {
+      "behaviour": [
+        {
+          "name": "NormalOperation",
+          "description": "Publishes periodic updates via HTTPS"
+        }
+      ],
+      "technicalConstraint": [
+        {
+          "name": "MaxPayloadSize",
+          "description": "Maximum payload size of 1MB per request."
+        }
+      ],
+      "serviceMonitoring": {
+        "monitoringDescription": "UptimeMonitoring",
+        "reference": {
+          "url": "https://api.example.org/positions",
+          "description": "Monitors service uptime and responsiveness."
+        }
+      }
+    },
+    "references": {
+      "implementedStandard": [
+        {
+          "title": "EUROCONTROL Example Spec",
+          "conformanceStatement": "Conforms to example requirements",
+          "standardType": "EUROCONTROL_SPECIFICATION_FOR_SWIM_SERVICE_DESCRIPTION"
+        }
+      ]
+    },
+    "serviceInterface": [
+      {
+        "name": "Primary API",
+        "description": "REST API delivering aeronautical data",
+        "provisionSide": "PROVIDER_SIDE",
+        "serviceInterfaceBinding": {
+          "name": "SWIM_TI_YP_2_0_WS_LIGHT"
+        },
+        "networkInterfaceBinding": {
+          "name": "HTTPS",
+          "description": "Standard HTTPS binding over TCP/IP"
+        },
+        "endpoints": [
+          {
+            "name": "PrimaryEndpoint",
+            "url": "https://api.example.org/positions"
+          },
+                    {
+            "name": "SecondaryEndpoint",
+            "url": "https://api.example.org/positions/secondary"
+          }
+        ],
+        "reference": {
+          "url": "https://api.example.org/positions",
+          "description": "API endpoint for accessing aeronautical positions."
+        },
+        "operations": [
+          {
+            "name": "GetAircraftPositions",
+            "description": "Retrieves current positions of all tracked aircraft.",
+            "messages": [
+              {
+                "name": "PositionRequest",
+                "direction": "IN"
+              }
+            ],
+            "parameters": [
+              {
+                "name": "maxResults",
+                "description": "Maximum number of results to return.",
+                "type": "integer"
+              }
+            ]
+          }
+        ],
+        "messages": [
+          {
+            "name": "PositionUpdate",
+            "description": "Message containing aircraft position data.",
+            "schema": {
+              "url": "https://api.example.org/positions"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
