@@ -21,7 +21,7 @@
   "title": "Service Metadata Schema for service definitions",
   "description": "JSON Schema for service definitions based on the requirements from the EUROCONTROL SWIM Service Definition Specification (EUROCONTROL-SPEC-195) Ed. 1.0.",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/definition/v3.0/service-definition.schema.json",
+  "$id": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/definition/v3.0/service-definition.schema.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -40,7 +40,7 @@
       "unevaluatedProperties": false,
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/BaseInformationService"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/BaseInformationService"
         }
       ],
       "required": [
@@ -95,7 +95,7 @@
       "description": "An entity (person or organization) that provides the Service Definition. [SWIM-DEFN-085]",
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceProvider"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceProvider"
         },
         {
           "properties": {
@@ -103,7 +103,7 @@
               "description": "List of persons or groups within the organization, suitable for making a human contact for any purpose.",
               "type": "array",
               "items": {
-                "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/BasePointOfContact"
+                "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/BasePointOfContact"
               },
               "minItems": 1
             }
@@ -133,14 +133,14 @@
         },
         "reference": {
           "description": "A optional reference to the SWIM TI Profile Specification.",
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/Reference"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/Reference"
         }
       }
     },
     "ServiceInterfaceItem": {
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceInterface"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceInterface"
         },
         {
           "type": "object",
@@ -165,7 +165,7 @@
       "description": "A taxonomy used to classify a service by the type of service provided or by some other technological or architectural solution. [SWIM-SERV-090, SWIM-DEFN-095, SWIM-SERV-100, SWIM-SERV-110, SWIM-SERV-210]",
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceCategorisation"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceCategorisation"
         },
         {
           "type": "object",
@@ -174,7 +174,7 @@
               "description": "The types of service provider from which this service is intended to be provided. [SWIM-DEFN-095]",
               "type": "array",
               "items": {
-                "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/reference-code-types.schema.json#/$defs/CodeStakeholderType"
+                "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/reference-code-types.schema.json#/$defs/CodeStakeholderType"
               },
               "minItems": 1
             }
@@ -191,7 +191,7 @@
       "description": "Description of the service in terms of what it provides, the purpose and under which conditions and quality levels the service is provided. [SWIM-DEFN-130, SWIM-DEFN-140, SWIM-DEFN-150, SWIM-DEFN-160, SWIM-DEFN-180, SWIM-DEFN-185, SWIM-DEFN-200, SWIM-DEFN-330]",
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceGeneralDescription"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceGeneralDescription"
         },
         {
           "type": "object",
@@ -218,7 +218,7 @@
           "type": "string"
         },
         "reference": {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/Reference"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/Reference"
         }
       },
       "minProperties": 1
@@ -228,7 +228,7 @@
       "unevaluatedProperties": false,
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceReferences"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceReferences"
         }
       ]
     },
@@ -237,7 +237,7 @@
       "unevaluatedProperties": false,
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceIdentification"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceIdentification"
         }
       ]
     },
@@ -246,7 +246,7 @@
       "unevaluatedProperties": false,
       "allOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/2025-CRs/common/v1.0/common-types.schema.json#/$defs/ServiceTechnicalDescription"
+          "$ref": "https://raw.githubusercontent.com/eurocontrol-swim/service-metadata-schema/refs/heads/main/common/v1.0/common-types.schema.json#/$defs/ServiceTechnicalDescription"
         }
       ]
     }
