@@ -1,0 +1,1410 @@
+{
+  "copyright": [
+    "Copyright 2022 EUROCONTROL",
+    "==========================================",
+    "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:",
+    "1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.",
+    "2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer ",
+    "   in the documentation and/or other materials provided with the distribution.",
+    "3. Neither the name of the copyright holder nor the names of its contributors may be used to",
+    "   endorse or promote products derived from this software without specific prior written permission.",
+    "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS-IS AND ANY EXPRESS OR IMPLIED WARRANTIES,",
+    "INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.",
+    "IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES",
+    "(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)",
+    "HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT",
+    "(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+    "==========================================",
+    "Editorial note: this license is an instance of the BSD license template as provided by the Open Source Initiative: http://opensource.org/licenses/BSD-3-Clause",
+    "Details on EUROCONTROL: http://www.eurocontrol.int"
+  ],
+  "title": "Service Metadata Schema for service descriptions",
+  "description": "",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "informationService"
+  ],
+  "properties": {
+    "informationService": {
+      "description": "The description of a service. [SWIM-SERV-001]",
+      "$ref": "#/definitions/InformationService"
+    }
+  },
+  "definitions": {
+    "Abbreviation": {
+      "description": "An abbreviation or acronym used by the service description. [SWIM-SERV-350]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the abbreviation. [SWIM-SERV-350]",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the abbreviation. [SWIM-SERV-350]",
+          "type": "string"
+        }
+      }
+    },
+    "AccessAndUseCondition": {
+      "description": "A condition which applies to accessing and using the service, such as legal constraint, service policies, service consumption constraints and security constraints. [SWIM-SERV-150]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the condition. [SWIM-SERV-150]",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of service access or use condition. [SWIM-SERV-150]",
+          "$ref": "#/definitions/CodeAccessAndUseConditionType"
+        },
+        "description": {
+          "description": "Description of the conditions that influence accessing and using the service, such as legal constraint; service policies; service consumption constraints. Concrete access control and other security mechanisms are described in the technical section of the form. [SWIM-SERV-150]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 3
+    },
+    "Concept": {
+      "description": "Optional information intended for a good understanding of the service. This may cover design concepts related to the service, logical model, design considerations, or any other information not pertaining to the other fields. [SWIM-SERV-330, SWIM-SERV-340]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the concept.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the concept.",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "ContactInformation": {
+      "description": "Information used to correspond with the point of contact. [SWIM-SERV-070]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "address"
+      ],
+      "properties": {
+        "type": {
+          "description": "The type of contact information. [SWIM-SERV-070]",
+          "$ref": "#/definitions/CodeContactInformationType"
+        },
+        "address": {
+          "description": "A phone number or an electronic mail address used to correspond with the point of contact. [SWIM-SERV-070]",
+          "type": "string"
+        }
+      }
+    },
+    "DescriptionIdentification": {
+      "description": "Information that supports the identification and citation of a service description. [SWIM-SERV-030]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "referenceDate",
+        "edition"
+      ],
+      "properties": {
+        "title": {
+          "description": "The name by which the document is formally known. [SWIM-SERV-030]",
+          "type": "string"
+        },
+        "referenceDate": {
+          "description": "A reference date for use in citing the service description. [SWIM-SERV-030]",
+          "type": "string",
+          "format": "date"
+        },
+        "edition": {
+          "description": "The edition of the document. [SWIM-SERV-030]",
+          "type": "string"
+        }
+      }
+    },
+    "DescriptionInformation": {
+      "description": "Meta information about the service description.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "descriptionIdentification",
+        "abbreviations"
+      ],
+      "properties": {
+        "descriptionIdentification": {
+          "description": "Information that supports the identification and citation of a service description. [SWIM-SERV-005]",
+          "$ref": "#/definitions/DescriptionIdentification"
+        },
+        "abbreviations": {
+          "description": "Abbreviations or acronyms used by the service description.",
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Abbreviation"
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "reference": {
+                  "$ref": "#/definitions/Reference"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "Document": {
+      "description": "A piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "documentType",
+        "title",
+        "version"
+      ],
+      "properties": {
+        "documentType": {
+          "description": "The type of document.",
+          "$ref": "#/definitions/CodeDocumentType"
+        },
+        "title": {
+          "description": "The name by which the document is formally known.",
+          "type": "string"
+        },
+        "version": {
+          "description": "The current version or revision level of the document.",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        },
+        "description": {
+          "description": "The description of the document.",
+          "type": "string"
+        }
+      }
+    },
+    "Filtering": {
+      "description": "The filtering capabilities, including meaning and syntax of filter expressions, which can be applied to the information exchange. [SWIM-SERV-310]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability"
+      ],
+      "properties": {
+        "capability": {
+          "description": "A filtering capability, including meaning and syntax of filter expressions, which can be applied to the information exchange [SWIM-SERV-310]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FilteringCapability"
+          }
+        }
+      }
+    },
+    "FilteringCapability": {
+      "description": "A filtering capability, including meaning and syntax of filter expressions, which can be applied to the information exchange [SWIM-SERV-310]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the filtering capability. [SWIM-SERV-310]",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the filtering capability. [SWIM-SERV-310]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "Functionality": {
+      "description": "A type of activity describing the functionality of a service. [SWIM-SERV-140]",
+      "type": "object",
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "name",
+            "description",
+            "realWorldEffect"
+          ]
+        },
+        {
+          "required": [
+            "name",
+            "reference"
+          ]
+        }
+      ],
+      "properties": {
+        "description": {
+          "description": "Description of the service function. [SWIM-SERV-140]",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the service function. [SWIM-SERV-140]",
+          "type": "string"
+        },
+        "realWorldEffect": {
+          "description": "An ultimate purpose associated with the interaction with the service. It may be the response to a request for information or the change in the state of some entities shared between the participants in the interaction. [SWIM-SERV-140]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "GeographicalExtent": {
+      "description": "The geographic coverage of the information provided by the service. [SWIM-REG-0004,SERV-OVW-008]",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "aerodrome": {
+          "description": "A four-letter code group formulated in accordance with rules prescribed by ICAO and assigned to the aerodrome. [SWIM-REG-0004]",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fir": {
+          "description": "A four-letter code group formulated in accordance with rules prescribed by ICAO and assigned to the airspace. [SWIM-REG-0004]",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "countryCode": {
+          "description": "Nationality letters of a State as defined by ICAO. [SWIM-REG-0004]",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "description": "Additional optional description of the geographical extent.",
+          "type": "string"
+        },
+        "region": {
+          "description": "An ICAO region as defined in Appendix 1 to the Directives to Regional Air Navigation Meetings and Rules of Procedure for their Conduct (ICAO Doc 8-AN/874). [SERV-OVW-008]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CodeICAORegionType"
+          }
+        },
+        "geometry": {
+          "description": "A geoJSON GeometryCollection allowing to describe the geographical geometry of the InformationGeographicalExtent.",
+          "$ref": "https://geojson.org/schema/GeometryCollection.json"
+        }
+      }
+    },
+    "ImplementedStandard": {
+      "description": "A standard used for the implementation of the service. [SWIM-SERV-120]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standardType",
+        "conformanceStatement",
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "description": "The name by which the document is formally known. [SWIM-SERV-120]",
+          "type": "string"
+        },
+        "version": {
+          "description": "The current version or revision level of the document. [SWIM-SERV-120]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        },
+        "description": {
+          "description": "The description of the entity.",
+          "type": "string"
+        },
+        "standardType": {
+          "description": "The type of implemented standard. [SWIM-SERV-120]",
+          "$ref": "#/definitions/CodeServiceStandardType"
+        },
+        "conformanceStatement": {
+          "description": "A statement about the degree of conformance of the service against the standard. [SWIM-SERV-120]",
+          "type": "string"
+        }
+      }
+    },
+    "InformationDefinition": {
+      "description": "A formal representation of information concepts or data concepts. [SWIM-SERV-290]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "definition",
+        "airmCorrespondence"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the element. [SWIM-SERV-290]",
+          "type": "string"
+        },
+        "definition": {
+          "description": "The definition of the element. [SWIM-SERV-290]",
+          "type": "string"
+        },
+        "datatype": {
+          "description": "The data type used by the element whether the information definition used by the service conforms to the ATM Information Reference Model. [SWIM-SERV-290]",
+          "type": "string"
+        },
+        "airmCorrespondence": {
+          "description": "The semantic correspondence of the element with the ATM Information Reference Model. [SWIM-SERV-290]",
+          "type": "string"
+        },
+        "cardinality": {
+          "description": "The cardinality applicable to the element, including whether the element is optional, conditional or mandatory in the exchange. [SWIM-SERV-300]",
+          "type": "string"
+        },
+        "constraints": {
+          "description": "Constraints applicable to the element, e.g., value ranges, special values, character set restrictions... [SWIM-SERV-300]",
+          "type": "string"
+        },
+        "path": {
+          "description": "An expression representing the structural relation of the element within the payload. [SWIM-SERV-300]",
+          "type": "string"
+        }
+      }
+    },
+    "InformationService": {
+      "description": "Description of an information service. [SWIM-SERV-010]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "serviceAbstract",
+        "serviceProvider",
+        "serviceCategorisation",
+        "generalDescription",
+        "informationDescription",
+        "technicalDescription",
+        "references",
+        "serviceInterface",
+        "descriptionInformation",
+        "serviceIdentification"
+      ],
+      "properties": {
+        "serviceAbstract": {
+          "description": "A brief summary of the service offering. [SWIM-SERV-050]",
+          "type": "string"
+        },
+        "serviceProvider": {
+          "description": "Description about who provides the service, when and how it is supported. [SWIM-SERV-060]",
+          "$ref": "#/definitions/ServiceProvider"
+        },
+        "serviceCategorisation": {
+          "description": "A taxonomy used to classify a service by the type of service provided or by some other technological or architectural solution.",
+          "$ref": "#/definitions/ServiceCategorisation"
+        },
+        "generalDescription": {
+          "description": "A container for information about what the service provides, its purpose and under which conditions and quality levels it is provided.",
+          "$ref": "#/definitions/ServiceGeneralDescription"
+        },
+        "informationDescription": {
+          "description": "A container for the description of the information exchanged by the information service.",
+          "$ref": "#/definitions/ServiceInformationDescription"
+        },
+        "technicalDescription": {
+          "description": "A container for information about the security mechanisms, technical constraints and monitoring of the information service.",
+          "$ref": "#/definitions/ServiceTechnicalDescription"
+        },
+        "references": {
+          "description": "A container for references to documents describing specific aspects of the service instance.",
+          "$ref": "#/definitions/ServiceDescriptionReferences"
+        },
+        "serviceInterface": {
+          "description": "The means by which the underlying capabilities of a service are accessed.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceInterface"
+          },
+          "minItems": 1
+        },
+        "descriptionInformation": {
+          "description": "Metadata about the description.",
+          "$ref": "#/definitions/DescriptionInformation"
+        },
+        "serviceIdentification": {
+          "description": "Information for identifying the service.",
+          "$ref": "#/definitions/ServiceIdentification"
+        }
+      }
+    },
+    "ServiceInterface": {
+      "type": "object",
+      "required": [
+        "name",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "reference": {
+          "description": "A reference to the service interface documentation. [SWIM-SERV-240]",
+          "$ref": "#/definitions/Reference"
+        },
+        "schema": {
+          "description": "A reference to a machine readable service interface definition. [SWIM-SERV-320]",
+          "$ref": "#/definitions/Reference"
+        },
+        "provisionSide": {
+          "description": "Identification of the side that provides the interface; either provider or consumer. [SWIM-SERV-240]",
+          "$ref": "#/definitions/CodeProvisionSideType"
+        },
+        "endpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Endpoint"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Operation"
+          }
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
+        },
+        "serviceInterfaceBinding": {
+          "description": "A reference to the Service Interface Binding as specificed in the selected SWIM TI Profile. [SWIM-SERV-250]",
+          "$ref": "#/definitions/Binding"
+        },
+        "networkInterfaceBinding": {
+          "description": "A reference to the Network Interface Binding as specificed in the selected SWIM TI Profile. [SWIM-SERV-250]",
+          "$ref": "#/definitions/Binding"
+        },
+        "messageExchangePattern": {
+          "description": "The type of primitive MEP implemented by the interface.",
+          "$ref": "#/definitions/CodePrimitiveMessageExchangePatternType"
+        }
+      }
+    },
+    "Operation": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "idempotency"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parameter"
+          }
+        },
+        "idempotency": {
+          "$ref": "#/definitions/CodeIdempotencyType"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "direction"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "direction": {
+                "type": "string",
+                "enum": [
+                  "IN",
+                  "OUT"
+                ]
+              }
+            }
+          }
+        },
+        "binding_method": {
+          "$ref": "#/definitions/BindingMethod"
+        }
+      }
+    },
+    "Parameter": {
+      "type": "object",
+      "required": [
+        "name",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Message": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "schema"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "isError": {
+          "type": "boolean"
+        },
+        "schema": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "Binding": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "description": "Additional description detailing the configuration of the Binding and (if necessary) versions of the protocols used. [SWIM-SERV-250, SWIM-SERV-260]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      }
+    },
+    "BindingMethod": {
+      "type": "string"
+    },
+    "Reference": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "Endpoint": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "reference": {
+          "#ref": "#/definitions/Reference"
+        },
+        "resourceType": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "direction"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "direction": {
+                "type": "string",
+                "enum": [
+                  "IN",
+                  "OUT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "OperationalEnvironment": {
+      "description": "Information about the operational environment is useful to get an understanding of the service. Information about the operational needs addressed by the service and the capabilities the service offers supports decision making in terms of the service suitability within a particular operational context. [SWIM-SERV-130]",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "operationalNeeds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OperationalNeed"
+          },
+          "minItems": 1
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SupportedCapability"
+          },
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "SupportedCapability": {
+      "description": "A statement of the operational capabilities supported by the service. [SWIM-SERV-130]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the supported capability. [SWIM-SERV-130]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the operational capability supported by the service. [SWIM-SERV-130].",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "OperationalNeed": {
+      "description": "A statement of the operational attributes of a system needed for the effective and/or efficient provision of air traffic services to users. [SWIM-SERV-130]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the operational requirement. [SWIM-SERV-130]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the operational needs fulfilled by the service. Includes or refers to information exchange requirements. [SWIM-SERV-130].",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "PointOfContact": {
+      "description": "List of persons or groups within the service provider organization, suitable for making a human contact for any purpose.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "contactInformation",
+        "role"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the point of contact.",
+          "type": "string"
+        },
+        "contactInformation": {
+          "description": "Information used to correspond with the point of contact.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContactInformation"
+          }
+        },
+        "role": {
+          "description": "The role of the point of contact.",
+          "type": "string"
+        }
+      }
+    },
+    "QualityOfService": {
+      "description": "The degree or level of confidence that the performance of a service meets users requirements. [SWIM-SERV-180]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the quality of service. [SWIM-SERV-180]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the quality of service offered. [SWIM-SERV-180]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "ServiceBehaviour": {
+      "description": "The manner in which a service operates under normal and unexpected conditions. [SWIM-SERV-220]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the service behaviour. [SWIM-SERV-220]",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the service behaviour. [SWIM-SERV-220]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "ServiceCategorisation": {
+      "description": "A taxonomy used to classify a service by the type of service provided or by some other technological or architectural solution. [SWIM-SERV-009]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "serviceType",
+        "informationCategory",
+        "applicationMessageExchangePattern",
+        "lifeCycle",
+        "geospatialCategorisation"
+      ],
+      "properties": {
+        "serviceType": {
+          "description": "An indication of the status of the service with regard to SWIM Service conformance.",
+          "$ref": "#/definitions/CodeSWIMServiceConformanceStatusType"
+        },
+        "lifeCycle": {
+          "description": "A classification of services based on their current, past, or future availability for provisioning. [SWIM-SERV-110]",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "lifeCycleStage"
+            ],
+            "properties": {
+              "lifeCycleStage": {
+                "$ref": "#/definitions/CodeLifeCycleStepType"
+              },
+              "from": {
+                "type": "string",
+                "format": "date"
+              },
+              "to": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "businessActivityType": {
+          "description": "The type of business activity.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CodeBusinessActivityType"
+          },
+          "minItems": 1
+        },
+        "intendedConsumer": {
+          "description": "The types of service consumers that this service is intended to serve.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CodeStakeholderType"
+          },
+          "minItems": 1
+        },
+        "informationCategory": {
+          "description": "A categorisation of services based on information domains. Multiple categories are acceptable, each category is a choice between an enumeration or a string in case no value in the enumeration is applicable. [SWIM-SERV-100]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CodeInformationExchangeCategory"
+          },
+          "minItems": 1
+        },
+        "applicationMessageExchangePattern": {
+          "description": "The type of Application MEP. [SWIM-SERV-210]",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "name",
+                  "reference"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name of the Application Message Exchange Pattern. [SWIM-SERV-210]",
+                    "type": "string"
+                  },
+                  "reference": {
+                    "$ref": "#/definitions/Reference"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name of the Application Message Exchange Pattern. Can take one of the enum values defined by CodeApplicationMessageExchangePatternType. [SWIM-SERV-210]",
+                    "$ref": "#/definitions/CodeApplicationMessageExchangePatternType"
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 1
+        },
+        "geospatialCategorisation": {
+          "description": "The geographic coverage of the information provided by the service. [SWIM-SERV-090]",
+          "$ref": "#/definitions/GeographicalExtent"
+        },
+        "other": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "value"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the category. [SWIM-SERV-100]",
+                "type": "string"
+              },
+              "value": {
+                "description": "Value taken by the service in the category. [SWIM-SERV-100]",
+                "type": "string"
+              },
+              "categorisationScheme": {
+                "description": "A reference to the categorisation scheme used. [SWIM-SERV-100]",
+                "$ref": "#/definitions/Reference"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ServiceDescriptionReferences": {
+      "description": "References to complementary documents that provide additional details about the service. [SWIM-SERV-010]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementedStandard"
+      ],
+      "properties": {
+        "serviceDocument": {
+          "description": "A document that relates to the information service.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          },
+          "minItems": 1
+        },
+        "implementedStandard": {
+          "description": "A standard used for the implementation of the service [SWIM-SERV-120].",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImplementedStandard"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "ServiceGeneralDescription": {
+      "description": "Description of the service in terms of what it provides, the purpose and under which conditions and quality levels the service is provided.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operationalEnvironment",
+        "functionality",
+        "accessAndUseConditions",
+        "dateInOperation",
+        "qualitiesOfService",
+        "validation"
+      ],
+      "properties": {
+        "operationalEnvironment": {
+          "description": "Details about the operational environment to which the service relates. [SWIM-SERV-130]",
+          "$ref": "#/definitions/OperationalEnvironment"
+        },
+        "functionality": {
+          "description": "A type of activity describing the functionality of a service. [SWIM-SERV-140]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Functionality"
+          },
+          "minItems": 1
+        },
+        "accessAndUseConditions": {
+          "description": "Conditions which apply to accessing and using the service, such as legal constraint, service policies, service consumption constraints and security constraints. [SWIM-SERV-150]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccessAndUseCondition"
+          },
+          "minItems": 1
+        },
+        "dateInOperation": {
+          "description": "Date at which the service went into operation or is planned to become operational.",
+          "type": "string",
+          "format": "date"
+        },
+        "qualitiesOfService": {
+          "description": "The degree or level of confidence that the performance of a service meets users requirements. [SWIM-SERV-180]",
+          "type": "object",
+          "required": [
+            "performance",
+            "reliability",
+            "security"
+          ],
+          "properties": {
+            "performance": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/QualityOfService"
+              },
+              "minItems": 1
+            },
+            "reliability": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/QualityOfService"
+              },
+              "minItems": 1
+            },
+            "security": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/QualityOfService"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "serviceSupport": {
+          "description": "Service support point of contact information. [SWIM-SERV-080]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PointOfContact"
+          },
+          "minItems": 1
+        },
+        "validation": {
+          "description": "Activity whereby a service is checked for conformance with the service objectives and requirements. [SWIM-SERV-200]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidationOfService"
+          },
+          "minItems": 1
+        },
+        "concepts": {
+          "description": "Optional information intended for a good understanding of the service. This may cover design concepts related to the service, logical model, design considerations, or any other information not pertaining to the other fields.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Concept"
+          }
+        }
+      }
+    },
+    "ServiceIdentification": {
+      "description": "Information for identifying the service.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "description": "A piece of identifying information that gives stakeholders a way to reference or identify a service. [SWIM-SERV-040]",
+          "type": "string"
+        },
+        "version": {
+          "description": "The version of the information service. [SWIM-SERV-040]",
+          "type": "string"
+        }
+      }
+    },
+    "ServiceInformationDescription": {
+      "description": "A container for the description of the information exchanged by the information service. [SWIM-SERV-290]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "informationDefinition"
+      ],
+      "properties": {
+        "informationDefinition": {
+          "description": "A formal representation of information concepts or data concepts. [SWIM-SERV-290]",
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "reference": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "minItems": 1
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InformationDefinition"
+              },
+              "minItems": 1
+            }
+          ]
+        },
+        "filtering": {
+          "description": "The filtering capabilities, including meaning and syntax of filter expressions, which can be applied to the information exchange. [SWIM-SERV-310]",
+          "$ref": "#/definitions/Filtering"
+        },
+        "sourceOfInformation": {
+          "description": "A description of the origins of information provided by the information service along with an indication whether there were any subsequent modifications. [SWIM-SERV-190]",
+          "type": "string"
+        }
+      }
+    },
+    "ServiceMonitoring": {
+      "description": "Tracking state and operational conditions related to the execution, performance, and real-world effects of services. [SWIM-SERV-230]",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "monitoringDescription": {
+          "description": "Description if available of the existing monitoring capabilities and how this can be used by the consumer. [SWIM-SERV-230].",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 1
+    },
+    "ServiceProvider": {
+      "description": "An entity (person or organization) that offers the use of capabilities by means of a service. [SWIM-SERV-060]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "providerDescription"
+      ],
+      "properties": {
+        "provider": {
+          "description": "The full official name of the organisation. [SWIM-SERV-060]",
+          "type": "string"
+        },
+        "abbreviation": {
+          "description": "The abbreviated name of the organisation. [SWIM-SERV-060]",
+          "type": "string"
+        },
+        "providerDescription": {
+          "description": "Description of the organisational unit responsible for the service. [SWIM-SERV-060]",
+          "type": "string"
+        },
+        "providerType": {
+          "description": "The type of service provider. [SWIM-SERV-060]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CodeStakeholderType"
+          },
+          "minItems": 1
+        },
+        "pointOfContact": {
+          "description": "List of persons or groups within the service provider organization, suitable for making a human contact for any purpose. [SWIM-SERV-070]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PointOfContact"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "ServiceTechnicalDescription": {
+      "description": "Description of the technical aspects of the service including data structures, interface and operations behaviour, security mechanisms and technical constraints",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "behaviour"
+      ],
+      "properties": {
+        "technicalConstraint": {
+          "description": "A characteristic of the environment or larger system within which the service operates. [SWIM-SERV-170]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TechnicalConstraint"
+          }
+        },
+        "serviceMonitoring": {
+          "description": "A service monitoring mechanism available to service consumers. [SWIM-SERV-230]",
+          "$ref": "#/definitions/ServiceMonitoring"
+        },
+        "behaviour": {
+          "description": "The manner in which a service operates under normal and unexpected conditions. [SWIM-SERV-220]",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceBehaviour"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "TechnicalConstraint": {
+      "description": "A characteristic of the environment or larger system within which the service operates. [SWIM-SERV-170]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name of the technical constraint. [SWIM-SERV-170]",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the technical constraint. [SWIM-SERV-170]",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "ValidationOfService": {
+      "description": "An activity whereby a service is checked for conformance with the service objectives and requirements. Note: the service objectives and requirements are captured in the service overview and the technical specifications. [SWIM-SERV-027]",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "description": "The validation method used. [SWIM-SERV-200]",
+          "$ref": "#/definitions/CodeServiceValidationType"
+        },
+        "description": {
+          "description": "The description of the service validation. Including; summary of validation steps, results achieved and pointer to validation evidence. [SWIM-SERV-200]",
+          "type": "object",
+          "properties": {
+            "validationSteps": {
+              "description": "Summary of the validation steps performed. [SWIM-SERV-200]",
+              "type": "string"
+            },
+            "validationResults": {
+              "description": "The results achieved on the validation. [SWIM-SERV-200]",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "Where or how to obtain the available evidence of the validation. [SWIM-SERV-200]",
+              "type": "string"
+            }
+          }
+        },
+        "reference": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "minProperties": 2
+    },
+    "CodeStakeholderType": {
+      "description": "A code listing types of stakeholders. See values: http://reference.swim.aero/information-services/service-categories/CodeStakeholderType.html",
+      "type": "string"
+    },
+    "CodeAccessAndUseConditionType": {
+      "description": "A code listing access and use conditions. [SWIM-SERV-150], [SWIM-SERV-160]",
+      "type": "string"
+    },
+    "CodeApplicationMessageExchangePatternType": {
+      "description": "A code listing types of application message exchange patterns. See values: http://reference.swim.aero/information-services/service-categories/CodeApplicationMessageExchangePatternType.html",
+      "type": "string"
+    },
+    "CodeBusinessActivityType": {
+      "description": "A code listing the types of business activities. See values: http://reference.swim.aero/information-services/service-categories/CodeBusinessActivityType.html",
+      "type": "string"
+    },
+    "CodeContactInformationType": {
+      "description": "A code listing types of contact information.",
+      "type": "string",
+      "enum": [
+        "PHONE",
+        "EMAIL",
+        "URL",
+        "POSTAL",
+        "OTHER"
+      ]
+    },
+    "CodeDirectionType": {
+      "description": "A code that indicates whether the message is input or output. ",
+      "type": "string",
+      "enum": [
+        "IN",
+        "OUT"
+      ]
+    },
+    "CodeDocumentType": {
+      "description": "A code describing types of documents.",
+      "type": "string"
+    },
+    "CodeICAORegionType": {
+      "description": "The list of ICAO Regions as defined in Appendix 1 to the Directives to Regional Air Navigation Meetings and Rules of Procedure for their Conduct (ICAO Doc 8-AN/874). See values: http://reference.swim.aero/information-services/service-categories/CodeICAORegionType.html",
+      "type": "string"
+    },
+    "CodeIdempotencyType": {
+      "description": "A code indicating whether the operation is idempotent or non-idempotent.",
+      "type": "string",
+      "enum": [
+        "IDEMPOTENT",
+        "NON_IDEMPOTENT"
+      ]
+    },
+    "CodeInformationExchangeCategory": {
+      "description": "A categorisation of services based on information domains. [SWIM-SERV-100]. See values: https://reference.swim.aero/information-services/service-categories/CodeRegulatedInformationExchangeType.html",
+      "type": "string"
+    },
+    "CodeProvisionSideType": {
+      "description": "An indication that the operation is offered by the provider or the consumer.",
+      "type": "string",
+      "enum": [
+        "PROVIDER_SIDE",
+        "CONSUMER_SIDE"
+      ]
+    },
+    "CodeLifeCycleStepType": {
+      "description": "A classification of services based on their current, past, or future availability for provisioning. See values: http://reference.swim.aero/information-services/service-categories/CodeLifeCycleStageType.html",
+      "type": "string"
+    },
+    "CodeNetworkInterfaceBindingType": {
+      "description": "A code listing the interface bindings that enable the SWIM TI to exchange data with the network.",
+      "type": "string"
+    },
+    "CodePrimitiveMessageExchangePatternType": {
+      "description": "A code listing types of primitive message exchange patterns.",
+      "type": "string"
+    },
+    "CodeServiceInterfaceBindingType": {
+      "description": "A code listing the interface bindings that enable services to exchange data with consuming applications.",
+      "type": "string"
+    },
+    "CodeServiceStandardType": {
+      "description": "A code listing types of service standards.",
+      "type": "string",
+      "enum": [
+        "EUROCONTROL_SPECIFICATION_FOR_SWIM_SERVICE_DESCRIPTION",
+        "EUROCONTROL_SPECIFICATION_FOR_SWIM_INFORMATION_DEFINITION",
+        "EUROCONTROL_SPECIFICATION_FOR_SWIM_TECHNICAL_INFRASTRUCTURE",
+        "SERVICE_STANDARD"
+      ]
+    },
+    "CodeServiceValidationType": {
+      "description": "A code listing validation methods. [SWIM-SERV-200]",
+      "type": "string"
+    },
+    "CodeSWIMServiceConformanceStatusType": {
+      "description": "An indication of the status of the service with regard to SWIM Service conformance.",
+      "type": "string",
+      "enum": [
+        "SWIM_COMPLIANT"
+      ]
+    },
+    "CodeSynchronicityType": {
+      "description": "A code indicating whether the operation is synchronous or asynchronous.",
+      "type": "string",
+      "enum": [
+        "SYNCHRONOUS",
+        "ASYNCHRONOUS"
+      ]
+    }
+  }
+}
