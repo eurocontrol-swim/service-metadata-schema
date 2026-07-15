@@ -470,6 +470,14 @@
                 {
                     "const": "OVERSIGHT_AUTHORITY",
                     "description": "Any entity responsible for monitoring, regulating, and ensuring compliance with laws, policies and standards within a particular field or organisation."
+                },
+                {
+                    "const": "FFICE_SERVICES_UNIT",
+                    "description": "A unit designated by the appropriate ATS authority for the provision of FF-ICE services."
+                },
+                {
+                    "const": "UAS_GEOGRAPHICAL_ZONES_PROVIDER",
+                    "description": "An entity delegated by the competent authority of a Member State, pursuant to Article 15 of Commission Implementing Regulation (EU) 2019/947, to make available information on UAS geographical zones in a common digital format via officially approved information services."
                 }
             ]
         },
