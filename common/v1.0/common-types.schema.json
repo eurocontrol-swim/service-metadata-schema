@@ -322,14 +322,13 @@
       }
     },
     "InformationDefinition": {
-      "description": "A formal representation of information concepts or data concepts. At least name, definition, dataType and airmCorrespondence must be provided. [SWIM-SERV-290, SWIM-SERV-300, SWIM-DEFN-290, SWIM-DEFN-300]",
+      "description": "A formal representation of information concepts or data concepts. At least name, definition, and airmCorrespondence must be provided. datatype property must be provided as applicable (e.g. it should be provided when a Data Concept is described while it could not be defined when representing an Information Concept). [SWIM-SERV-290, SWIM-SERV-300, SWIM-DEFN-290, SWIM-DEFN-300]",
       "type": "object",
       "additionalProperties": false,
       "required": [
         "name",
         "definition",
-        "airmCorrespondence",
-        "datatype"
+        "airmCorrespondence"
       ],
       "properties": {
         "name": {
@@ -343,7 +342,7 @@
           "minLength": 1
         },
         "datatype": {
-          "description": "The data type used by the element whether the information definition used by the service conforms to the ATM Information Reference Model. [SWIM-SERV-290, SWIM-DEFN-290]",
+          "description": "The data type used by the element whether the information definition used by the service conforms to the ATM Information Reference Model. It should be provided when the element being described represents a Data Concept [SWIM-SERV-290, SWIM-DEFN-290]",
           "type": "string",
           "minLength": 1
         },
